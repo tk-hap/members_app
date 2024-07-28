@@ -1,0 +1,5 @@
+{% extends "exercise_class/base.xml" %}
+{% block content %}
+<text style="day-header" href="{% url 'exercise-class-all' %}">Classes</text>
+{% endblock %}
+

@@ -1,0 +1,6 @@
+{% extends "exercise_class/base.xml" %}
+{% block content %}
+<text>{{ class_details.class_name }}</text>
+<text>{{ class_details.scheduled_date }}</text>
+<text>{{ class_details.participants.count }}</text>
+{% endblock %}

@@ -1,0 +1,35 @@
+{% extends "exercise_class/base.xml" %}
+{% load static %}
+{% block header %}
+<view style="day-header" safe-area="true">
+  <view style="day-indicator">
+    <form id="class-date">
+      <date-field
+        name="date"
+        placeholder="{{ date }}"
+        label-format="MMMM DD, YYYY"
+        placeholderTextColor="black"
+      >
+        <behavior trigger="change" verb="get" href="{% url 'exercise-class-all' %}" action="push"/>
+      </date-field>
+    </form>
+  </view>
+</view>
+{% endblock %}
+{% block content %}
+<list id="class-list">
+{% for class in exercise_classes %}
+  <item style="class-card" key="{{ class.id }}" href="{% url 'exercise-class-detail' class.id %}">
+    <text style="title-font">{{ class.class_name }}</text>
+    <text style="basic-font">{{ class.scheduled_date.time}}</text>
+    <text style="basic-font">Trainer: {{ class.trainer }}</text><image style="icon-medium" source="{{ class.trainer.user_avatar.url }}"/>
+    {% if class.participants.count >= class.max_participants %}
+    <text style="basic-font">Unavailable</text>
+    {% else %}
+    <text style="basic-font">Available</text>
+    {% endif %}
+
+  </item>
+{% endfor %}
+</list>
+{% endblock %}

@@ -1,0 +1,73 @@
+<style
+  id="header"
+  backgroundColor="#2C3E50"
+  />
+
+<style id="header-title" color="#FFFFFF" fontSize="24" fontWeight="600"/>
+
+<style id="body" backgroundColor="#2C3E50" flex="1"/>
+
+<style
+  id="item"
+  alignItems="center"
+  backgroundColor="#FFFFFF"
+  borderBottomColor="#eee"
+  borderBottomWidth="1"
+  flex="1"
+  flexDirection="row"
+  height="48"
+  justifyContent="space-between"
+  paddingLeft="24"
+  paddingRight="24"
+  />
+
+<style
+  id="day-header"
+  alignItems="center"
+  paddingTop="10%"
+  paddingBottom="2%"
+  flexDirection="row"
+  justifyContent="center"
+  />
+
+<style
+  id="day-indicator"
+  backgroundColor="#ECF0F1"
+  padding="10"
+  borderWidth="0"
+  borderRadius="20"
+  />
+
+<style
+  id="class-card"
+  backgroundColor="#4A90E2"
+  borderColor="#79747E"
+  borderWidth="0"
+  borderRadius="20"
+  margin="5"
+  flex="1"
+  flexDirection="column"
+  minHeight="120"
+  justifyContent="flex-start"
+  padding="2%"
+  />
+
+<style
+  id="title-font"
+  fontSize="24"
+  fontWeight="bold"
+  color="#FFFFFF"
+  />
+
+<style
+  id="basic-font"
+  fontSize="16"
+  color="#FFFFFF"
+  />
+
+<style
+  id="icon-medium"
+  width="48"
+  height="48"
+  />
+
