@@ -1,0 +1,35 @@
+{% extends "base.xml" %}
+{% load hv_tags %}
+{% block header %}
+<text style="header-title">Login</text>
+{% endblock %}
+
+{% block content %}
+<form id="login-form" scroll="true">
+  <view style="form-group">
+    <text-field
+      style="input"
+      name="username"
+      placeholder="Username"
+      />
+    <text-field
+      style="input"
+      name="password"
+      placeholder="Password"
+      secure-text="true"
+      />
+    <text
+      style="label-link"
+      href="{% url 'login' %}"
+      verb="post"
+      action="replace-inner"
+      target="redirect-container"
+      show-during-load="loading-spinner"
+      >
+        Submit
+      </text>
+  </view>
+</form>
+<spinner hide="true" id="loading-spinner"></spinner>
+<view id="redirect-container"/>
+{% endblock %}

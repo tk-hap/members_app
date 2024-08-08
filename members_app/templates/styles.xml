@@ -1,11 +1,32 @@
 <style
   id="header"
-  backgroundColor="#2C3E50"
+  backgroundColor="white"
   />
 
-<style id="header-title" color="#FFFFFF" fontSize="24" fontWeight="600"/>
+<style id="header-title" fontSize="24" fontWeight="600"/>
 
-<style id="body" backgroundColor="#2C3E50" flex="1"/>
+<style id="body" backgroundColor="white" flex="1" padding="48"/>
+<style id="label" fontSize="18" />
+<style id="label-link" color="blue" fontSize="18"/>
+
+<style
+  id="input"
+  borderBottomColor="#E1E1E1"
+  borderBottomWidth="1"
+  borderColor="#4E4D4D"
+  flex="1"
+  fontSize="16"
+  paddingBottom="8"
+  paddingTop="8"
+/>
+
+<style
+  id="form-group"
+  flex="1"
+  marginLeft="24"
+  marginRight="24"
+  marginTop="24"
+/>
 
 <style
   id="item"
@@ -62,7 +83,6 @@
 <style
   id="basic-font"
   fontSize="16"
-  color="#FFFFFF"
   />
 
 <style

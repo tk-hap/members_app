@@ -1,0 +1,1 @@
+<text xmlns="https://hyperview.org/hyperview" style="label-link" href="{% url 'cancel-booking' class_id %}" verb="post" action="replace">Cancel Booking</text>

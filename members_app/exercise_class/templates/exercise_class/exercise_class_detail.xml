@@ -1,6 +1,13 @@
-{% extends "exercise_class/base.xml" %}
+{% extends "base.xml" %}
 {% block content %}
-<text>{{ class_details.class_name }}</text>
-<text>{{ class_details.scheduled_date }}</text>
-<text>{{ class_details.participants.count }}</text>
+<text style="lablel">{{ class_details.class_name }}</text>
+<text style="label">{{ class_details.scheduled_date }}</text>
+<text style="label">{{ class_details.participants.count }}</text>
+{% if booked %}
+<text style="label-link" href="{% url 'cancel-booking' class_details.id %}" verb="post" action="replace">Cancel Booking</text>
+{% elif available %}
+<text style="label-link" href="{% url 'book' class_details.id %}" verb="post" action="replace">Book</text>
+{% else %}
+<text style="label">Unavailable</text>
+{% endif %}
 {% endblock %}

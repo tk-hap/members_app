@@ -1,4 +1,4 @@
-{% extends "exercise_class/base.xml" %}
+{% extends "base.xml" %}
 {% load static %}
 {% block header %}
 <view style="day-header" safe-area="true">

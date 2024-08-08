@@ -1,0 +1,5 @@
+<view
+  xmlns="https://hyperview.org/hyperview"
+  trigger="load"
+  href="{% url 'home' %}"
+/>

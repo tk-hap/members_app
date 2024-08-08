@@ -1,0 +1,7 @@
+{% extends "base.xml" %}
+{% block header %}
+<text style="header-title">Home</text>
+{% endblock %}
+{% block content %}
+<text style="label-link" href="{% url 'exercise-class-all' %}">Classes</text>
+{% endblock %}
