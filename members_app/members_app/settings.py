@@ -43,6 +43,8 @@ INSTALLED_APPS = [
     "django_hv",
     "rest_framework",
     "rest_framework.authtoken",
+    "notifications",
+    "feed.apps.FeedConfig", # This needs to be imported after the notifications app
 ]
 
 MIDDLEWARE = [
@@ -170,3 +172,5 @@ ACCOUNT_USERNAME_REQUIRED = True
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_UNIQUE_EMAIL = True
 ACCOUNT_SESSION_REMEMBER = True
+
+NOTIFICATIONS_NOTIFICATION_MODEL = 'feed.Notification'

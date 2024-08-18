@@ -31,9 +31,3 @@ def login(request):
 
             else:
                 return  # TODO: error response
-
-
-@api_view(["GET"])
-@permission_classes([IsAuthenticated])
-def home(request):
-    return render(request, "home.xml", {})

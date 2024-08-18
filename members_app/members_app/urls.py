@@ -19,12 +19,18 @@ from django.contrib import admin
 from django.urls import include, path
 from django.conf import settings
 from django.conf.urls.static import static
+import notifications.urls
 
 from . import views
 
 urlpatterns = [
     path("auth/", include("authentication.urls")),
     path("classes/", include("exercise_class.urls")),
+    path("feed/", include("feed.urls")),
     path("home/", views.home, name="home"),
+    path("index_navigator.xml", views.index_navigator, name="index-navigator"),
     path("admin/", admin.site.urls),
+    path(
+        "inbox/notifications/", include(notifications.urls, namespace="notifications")
+    ),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
