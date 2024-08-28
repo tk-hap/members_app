@@ -19,8 +19,9 @@
   <view
     style="bottom-tab"
     href-style="bottom-tab"
+    action="navigate"
+    target="feed-tab"
   > 
-    <behavior action="navigate" href="{% url "feed-home" %}" />
     <image
       source="{% static 'icons/feed.png' %}"
       style="bottom-tab-icon"

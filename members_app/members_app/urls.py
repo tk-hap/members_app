@@ -26,9 +26,10 @@ from . import views
 urlpatterns = [
     path("auth/", include("authentication.urls")),
     path("classes/", include("exercise_class.urls")),
+    path("users/", include("users.urls")),
     path("feed/", include("feed.urls")),
     path("home/", views.home, name="home"),
-    path("index_navigator.xml", views.index_navigator, name="index-navigator"),
+    path("index.xml", views.index, name="index"),
     path("admin/", admin.site.urls),
     path(
         "inbox/notifications/", include(notifications.urls, namespace="notifications")

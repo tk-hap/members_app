@@ -5,7 +5,8 @@ from .forms import SimpleNotificationForm
 
 class SimpleNotificationAdmin(admin.ModelAdmin):
     form = SimpleNotificationForm
-    list_display = ['recipient', 'level', 'description']
+    list_display = ["recipient", "level", "description"]
+
     def save_model(self, request, obj, form, change):
         if not obj.actor:
             obj.actor = request.user  # Automatically set the actor to the current admin
@@ -13,6 +14,8 @@ class SimpleNotificationAdmin(admin.ModelAdmin):
             obj.verb = "Message"
         super().save_model(request, obj, form, change)
 
-admin.site.unregister(Notification)
-admin.site.register(Notification, SimpleNotificationAdmin)  # Register with the custom admin
 
+admin.site.unregister(Notification)
+admin.site.register(
+    Notification, SimpleNotificationAdmin
+)  # Register with the custom admin

@@ -11,6 +11,7 @@ TIMEZONES = tuple(zip(
 class User(AbstractUser):
     first_name = models.CharField(max_length=20, blank=True)
     last_name = models.CharField(max_length=20, blank=True)
+    push_token = models.CharField(max_length=50, blank=True, null=True)
 
 
 class UserProfile(models.Model):

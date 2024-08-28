@@ -1,0 +1,49 @@
+import logging
+import requests
+from celery import shared_task
+from requests.exceptions import ConnectionError, HTTPError
+from exponent_server_sdk import PushClient, PushMessage, PushServerError, DeviceNotRegisteredError, PushTicketError
+
+logger = logging.getLogger(__name__)
+
+session = requests.Session()
+session.headers.update(
+    {
+        "accept": "application/json",
+        "accept-encoding": "gzip, deflate",
+        "content-type": "application/json",
+    }
+)
+
+# Basic arguments. You should extend this function with the push features you
+# want to use, or simply pass in a `PushMessage` object.
+@shared_task(bind=True, max_retries=3)
+def send_push_message_task(self, token, message, extra=None):
+    try:
+        response = PushClient(session=session).publish(
+            PushMessage(
+                        to=token,
+                        body=message,
+                        data=extra))
+    except PushServerError as exc:
+        # Encountered some likely formatting/validation error.
+        logger.error(f"PushServerError: token={token}, message={message}, extra={extra}, errors={exc.errors}, response_data={exc.response_data}")
+        raise
+    except (ConnectionError, HTTPError) as exc:
+        # Encountered some Connection or HTTP error - retry a few times in
+        # case it is transient.
+        logger.error(f"ConnectionError/HTTPError: token={token}, message={message}, extra={extra}")
+        raise self.retry(exc=exc)
+
+    try:
+        # We got a response back, but we don't know whether it's an error yet.
+        # This call raises errors so we can handle them with normal exception
+        # flows.
+        response.validate_response()
+    except DeviceNotRegisteredError:
+        # Mark the push token as inactive
+        from notifications.models import PushToken
+        PushToken.objects.filter(token=token).update(active=False)
+    except PushTicketError as exc:
+        # Encountered some other per-notification error.
+        logger.error(f"PushTicketError: token={token}, message={message}, extra={extra}, details={exc}")
