@@ -21,6 +21,7 @@ class ExerciseClass(models.Model):
     participants = models.ManyToManyField(User)
     max_participants = models.IntegerField(null=True)
     trainer = models.ForeignKey(Trainer, null=True, on_delete=models.SET_NULL)
+    reminder_sent = models.BooleanField(default=False)
 
     def __str__(self):
         return self.class_name
@@ -30,3 +31,9 @@ class ExerciseClass(models.Model):
             return False
         else:
             return True
+    
+    def is_upcoming(self):
+        if self.scheduled_date > timezone.now():
+            return True
+        else:
+            return False

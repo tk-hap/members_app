@@ -118,7 +118,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = "en-us"
 
-TIME_ZONE = "UTC"
+TIME_ZONE = "Pacific/Auckland"
 
 USE_I18N = True
 
@@ -178,5 +178,5 @@ ACCOUNT_SESSION_REMEMBER = True
 NOTIFICATIONS_NOTIFICATION_MODEL = "feed.Notification"
 
 # Celery settings
-CELERY_BROKER_URL = "redis://localhost:6379"
-CELERY_RESULT_BACKEND = "redis://localhost:6379"
+CELERY_BROKER_URL = "redis://redis:6379"
+CELERY_RESULT_BACKEND = "redis://redis:6379"

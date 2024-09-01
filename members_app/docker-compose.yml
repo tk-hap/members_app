@@ -28,8 +28,7 @@ services:
       db:
         condition: service_healthy
       migrations:
-
-      
+        condition: service_completed_successfully
   migrations:
     build: .
     command: python manage.py migrate --noinput
@@ -42,3 +41,32 @@ services:
     depends_on:
       db:
         condition: service_healthy
+  celery:
+    build: .
+    command: celery -A members_app worker -l info
+    volumes:
+      - .:/app
+    environment:
+      - POSTGRES_NAME=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    depends_on:
+      - db
+      - redis
+      - web
+  celery-beat:
+    build: .
+    command: celery -A members_app beat -l info
+    volumes:
+      - .:/app
+    environment:
+      - POSTGRES_NAME=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    depends_on:
+      - db
+      - redis
+      - web
+      - celery
+  redis:
+    image: redis
