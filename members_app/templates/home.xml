@@ -1,7 +1,32 @@
 {% extends "base.xml" %}
 {% block header %}
+{% load static %}
 <text style="header-title">Home</text>
 {% endblock %}
 {% block content %}
 <text style="label-link" href="{% url 'exercise-class-all' %}">Classes</text>
+<text style="label-link" href="{% url 'feed-home' %}">Feed</text>
+{% endblock %}
+{% block body %}
+<view id="footer" style="footer">
+  <view style="bottom-tab bottom-tab-selected">
+    <image
+      source="{% static 'icons/home.png' %}"
+      style="bottom-tab-icon bottom-tab-selected"
+    />
+    <text style="bottom-tab-label bottom-tab-label-selected">Home</text>
+  </view>
+  <view
+    style="bottom-tab"
+    href-style="bottom-tab"
+    action="navigate"
+    target="feed-tab"
+  > 
+    <image
+      source="{% static 'icons/feed.png' %}"
+      style="bottom-tab-icon"
+    />
+    <text style="bottom-tab-label">Feed</text>
+  </view>
+</view>
 {% endblock %}

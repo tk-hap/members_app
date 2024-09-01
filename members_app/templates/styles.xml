@@ -2,13 +2,46 @@
   id="header"
   backgroundColor="white"
   />
-
 <style id="header-title" fontSize="24" fontWeight="600"/>
-
-<style id="body" backgroundColor="white" flex="1" padding="48"/>
+<style
+  id="footer"
+  flex="1"
+  flexDirection="row"
+  flexShrink="1"
+  flexGrow="0"
+  bottom="45"
+  alignItems="stretch"
+  justifyContent="space-around"
+/>
+<style
+  id="bottom-tab"
+  flex="1"
+  height="48"
+  justifyContent="center"
+  alignItems="center"
+/>
+<style
+  id="bottom-tab-label"
+  fontSize="20"
+  fontWeight="bold"
+  color="#cccccc"
+/>
+<style id="bottom-tab-label-selected" color="#4778FF"/>
+<style id="bottom-tab-selected"/>
+<style
+  id="bottom-tab-icon"
+  flex="0"
+  justifyContent="center"
+  alignItems="center"
+  padding="10"
+/>
+<style id="body" backgroundColor="white" flex="1" paddingTop="48"/>
+<style id="main" flex="1"/>
 <style id="label" fontSize="18" />
 <style id="label-link" color="blue" fontSize="18"/>
-
+<style id="info" backgroundColor="#ADD8E6" />
+<style id="success" backgroundColor="green" />
+<style id="warning" backgroundColor="orange" />
 <style
   id="input"
   borderBottomColor="#E1E1E1"
@@ -19,7 +52,6 @@
   paddingBottom="8"
   paddingTop="8"
 />
-
 <style
   id="form-group"
   flex="1"
@@ -27,7 +59,6 @@
   marginRight="24"
   marginTop="24"
 />
-
 <style
   id="item"
   alignItems="center"
@@ -35,13 +66,51 @@
   borderBottomColor="#eee"
   borderBottomWidth="1"
   flex="1"
+  minHeight="48"
   flexDirection="row"
-  height="48"
+  justifyContent="flex-start"
+  paddingLeft="24"
+  paddingRight="24"
+  />
+<style
+  id="notification-item"
+  alignItems="center"
+  backgroundColor="white"
+  borderBottomColor="#eee"
+  borderBottomWidth="1"
+  flex="1"
+  minHeight="48"
+  flexDirection="row"
   justifyContent="space-between"
   paddingLeft="24"
   paddingRight="24"
   />
-
+<style
+  id="notification-item-icon"
+  height="36"
+  width="36"
+/>
+<style id="notification-item-left" flexDirection="row" />
+<style
+  id="notification-item-left-labels"
+  justifyContent="center"
+  marginLeft="8"
+  maxWidth="68%"
+/>
+<style
+  id="notificiation-item-verb"
+  color="#4E4D4D"
+  fontSize="14"
+  fontWeight="bold"
+/>
+<style
+  id="notification-item-description"
+  color="black"
+  fontSize="14"
+  fontWeight="normal"
+/>
+<style id="notification-item-right" flexDirection="row" />
+<style id="notification-item-time" textAlign="right"/>
 <style
   id="day-header"
   alignItems="center"
@@ -50,7 +119,6 @@
   flexDirection="row"
   justifyContent="center"
   />
-
 <style
   id="day-indicator"
   backgroundColor="#ECF0F1"
@@ -58,7 +126,6 @@
   borderWidth="0"
   borderRadius="20"
   />
-
 <style
   id="class-card"
   backgroundColor="#4A90E2"
@@ -72,22 +139,25 @@
   justifyContent="flex-start"
   padding="2%"
   />
-
+<style
+  id="spinner"
+  flex="1"
+  height="48"
+  justifyContent="center"
+  alignItems="center"
+/>
 <style
   id="title-font"
   fontSize="24"
   fontWeight="bold"
   color="#FFFFFF"
   />
-
 <style
   id="basic-font"
   fontSize="16"
   />
-
 <style
   id="icon-medium"
   width="48"
   height="48"
   />
-

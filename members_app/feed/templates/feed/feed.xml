@@ -1,0 +1,42 @@
+{% extends "base.xml" %}
+{% load static %}
+{% block header %}
+<text style="header-title">Feed</text>
+{% endblock %}
+
+{% block content %}
+<list>
+    <item
+        style="spinner"
+        key="load-more"
+        trigger="visible"
+        once="true"
+        href="{% url 'feed-page' next %}"
+        action="replace"
+    >
+        <spinner/>
+    </item>
+</list>
+{% endblock %}
+{% block body %}
+<view id="footer" style="footer">
+  <view
+    style="bottom-tab"
+    href-style="bottom-tab"
+    action="navigate"
+    target="home-tab"
+  > 
+    <image
+      source="{% static 'icons/home.png' %}"
+      style="bottom-tab-icon"
+    />
+    <text style="bottom-tab-label">Home</text>
+  </view>
+  <view style="bottom-tab bottom-tab-selected">
+    <image
+      source="{% static 'icons/feed.png' %}"
+      style="bottom-tab-icon bottom-tab-selected"
+    />
+    <text style="bottom-tab-label bottom-tab-label-selected">Feed</text>
+  </view>
+{% endblock %}

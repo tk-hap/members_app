@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/5.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.0/ref/settings/
 """
-
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -43,6 +43,8 @@ INSTALLED_APPS = [
     "django_hv",
     "rest_framework",
     "rest_framework.authtoken",
+    "notifications",
+    "feed.apps.FeedConfig",  # This needs to be imported after the notifications app
 ]
 
 MIDDLEWARE = [
@@ -83,10 +85,11 @@ WSGI_APPLICATION = "members_app.wsgi.application"
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
-        "NAME": "test",
-        "USER": "postgres",
-        "PASSWORD": "password",
-        "HOST": "localhost",
+        "NAME": os.environ.get("POSTGRES_NAME"),
+        "USER": os.environ.get("POSTGRES_USER"),
+        "PASSWORD": os.environ.get("POSTGRES_PASSWORD"),
+        "HOST": "db",
+        "PORT": 5432,
     }
 }
 
@@ -115,7 +118,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = "en-us"
 
-TIME_ZONE = "UTC"
+TIME_ZONE = "Pacific/Auckland"
 
 USE_I18N = True
 
@@ -161,6 +164,7 @@ REST_FRAMEWORK = {
 
 EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 
+LOGIN_URL = "/auth/login/"
 LOGIN_REDIRECT_URL = "home"
 ACCOUNT_LOGOUT_REDIRECT_URL = "home"
 
@@ -170,3 +174,9 @@ ACCOUNT_USERNAME_REQUIRED = True
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_UNIQUE_EMAIL = True
 ACCOUNT_SESSION_REMEMBER = True
+
+NOTIFICATIONS_NOTIFICATION_MODEL = "feed.Notification"
+
+# Celery settings
+CELERY_BROKER_URL = "redis://redis:6379"
+CELERY_RESULT_BACKEND = "redis://redis:6379"

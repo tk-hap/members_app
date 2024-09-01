@@ -1,0 +1,10 @@
+<doc xmlns="https://hyperview.org/hyperview">
+  <navigator id="root" type="stack">
+    <nav-route id="tabs-route" href="">
+      <navigator id="tabs" type="tab">
+        <nav-route id="home-tab" href="{% url 'home' %}" />
+        <nav-route id="feed-tab" href="{% url 'feed-home' %}" />
+      </navigator>
+    </nav-route>
+  </navigator>
+</doc>
