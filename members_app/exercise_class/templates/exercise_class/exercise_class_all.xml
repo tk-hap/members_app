@@ -22,7 +22,7 @@
   <item style="class-card" key="{{ class.id }}" href="{% url 'exercise-class-detail' class.id %}">
     <text style="title-font">{{ class.class_name }}</text>
     <text style="basic-font">{{ class.scheduled_date.time}}</text>
-    <text style="basic-font">Trainer: {{ class.trainer }}</text><image style="icon-medium" source="{{ class.trainer.user_avatar.url }}"/>
+    <text style="basic-font">Trainer: {{ class.trainer }}</text><image style="icon-medium" source="{{ class.trainer.url }}"/>
     {% if class.participants.count >= class.max_participants %}
     <text style="basic-font">Unavailable</text>
     {% else %}

@@ -6,6 +6,7 @@
 {% block content %}
 <text style="label-link" href="{% url 'exercise-class-all' %}">Classes</text>
 <text style="label-link" href="{% url 'feed-home' %}">Feed</text>
+<text style="label-link" href="{% url 'trainer-home' %}">Trainers</text>
 {% endblock %}
 {% block body %}
 <view id="footer" style="footer">

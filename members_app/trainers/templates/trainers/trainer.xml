@@ -1,0 +1,33 @@
+{% extends "base.xml" %}
+{% load static %}
+{% block content %}
+<view scroll="true">
+    <view style="profile-page">
+        <image style="profile-page-picture" source="{{ trainer.picture_thumbnail.url }}"/>
+        <text style="label-bold">{{ trainer.first_name }} {{ trainer.last_name }}</text>
+        <view style="contact-info">
+            <view style="button-icon" href="mailto:{{ trainer.email }}" action="deep-link">
+                <image style="icon-small" source="{% static 'icons/mail.png' %}"/>
+            </view>
+            <view style="button-icon" href="tel:{{ trainer.phone_number }}" action="deep-link">
+                <image style="icon-small" source="{% static 'icons/call.png' %}"/>
+            </view>
+        </view>
+    </view>
+    <view id="bio" style="content-card-outlined">
+        <text style="label-bold" >Bio</text>
+        <text style="basic-font" preformatted="true" numberOfLines="5">{{ trainer.bio }}</text>
+        <image 
+            style="icon-small"
+            source="{% static 'icons/arrow_down.png' %}"
+            href="{% url 'trainer-full-bio' trainer.id %}"
+            action="replace"
+            target="bio"
+        />
+    </view>
+    <view id="qualifications" style="content-card-outlined">
+        <text style="label-bold">Qualifications</text>
+        <text style="basic-font" preformatted="true">{{ trainer.qualifications }}</text>
+    </view>
+</view>
+{% endblock %}

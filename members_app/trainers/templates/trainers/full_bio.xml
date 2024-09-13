@@ -1,0 +1,11 @@
+{% load static %}
+<view xmlns="https://hyperview.org/hyperview" id="bio" style="content-card-outlined">
+    <text style="label-bold" >Bio</text>
+    <text style="basic-font" preformatted="true">{{ trainer.bio }}</text>
+    <image 
+        style="icon-small"
+        source="{% static 'icons/arrow_up.png' %}"
+        href="{% url 'trainer' trainer.id %}"
+        action="reload"
+    />
+</view>
