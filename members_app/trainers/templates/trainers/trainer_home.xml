@@ -1,0 +1,17 @@
+{% extends "base.xml" %}
+{% load static %}
+{% block header %}
+<text style="header-title">Trainers</text>
+{% endblock %}
+{% block content %}
+<view scroll="true">
+    <view style="profiles">
+    {% for trainer in trainers %}
+        <view style="profile-card" href="{% url 'trainer' trainer.id %}">
+            <image style="profile-picture" source="{{ trainer.picture_thumbnail.url }}"/>
+            <text style="centered-label">{{ trainer.first_name }} {{ trainer.last_name }}</text>
+        </view>
+    {% endfor %}
+    </view>
+</view>
+{% endblock %}

@@ -36,7 +36,7 @@
   padding="10"
 />
 <style id="body" backgroundColor="white" flex="1" paddingTop="48"/>
-<style id="main" flex="1"/>
+<style id="main" flex="1" height="100%" width="100%"/>
 <style id="label" fontSize="18" />
 <style id="label-link" color="blue" fontSize="18"/>
 <style id="info" backgroundColor="#ADD8E6" />
@@ -161,3 +161,105 @@
   width="48"
   height="48"
   />
+<style
+  id="icon-small"
+  width="24"
+  height="24"
+  />
+<style
+  id="profiles"
+  flex="1"
+  flexDirection="row"
+  flexWrap="wrap"
+  borderWidth="1"
+  borderColor="white"
+  alignItems="flex-start"
+  justifyContent="space-between"
+  />
+<style
+  id="profile-picture"
+  borderRadius="18"
+  width="98%"
+  height="85%"
+  left="1%"
+  right="1%"
+  top = "1%"
+  />
+
+<style
+  id="profile-card"
+  backgroundColor="white"
+  borderColor="white"
+  borderWidth="1"
+  borderRadius="20"
+  margin="1"
+  flexDirection="column"
+  justifyContent="flex-start"
+  martinTop="5"
+  marginBottom="10"
+  elevation="5"
+  minWidth="48%"
+  height = "200"
+  minHeight="30%"
+  />
+<style
+  id="profile-page-picture"
+  height="200"
+  width="200"
+  borderRadius="500"
+/>
+<style
+  id="profile-page"
+  backgroundColor="white"
+  flex="1"
+  flexDirection="column"
+  justifyContent="flex-start"
+  alignItems="center"
+  paddingTop="24"
+  paddingBottom="24"
+  />
+<style
+  id="contact-info"
+  minHeight="40"
+  maxHeight="40"
+  width="100%"
+  flexDirection="row"
+  alignItems="center"
+  justifyContent="center"
+  />
+<style 
+  id="button-primary" 
+  flex="1"
+  flexDirection="row"
+  backgroundColor="#4A90E2"
+  borderRadius="20"
+  height="40"
+  marginHorizontal="10"
+  paddingHorizontal="24"
+  justifyContent="center"
+  alignItems="center"
+  />
+<style 
+  id="button-icon"
+  height="40"
+  width="40"
+  backgroundColor="#4A90E2"
+  borderRadius="200"
+  justifyContent="center"
+  alignItems="center"
+  margin="5"
+  />  
+<style
+  id="content-card-outlined"
+  backgroundColor="white"
+  borderColor="black"
+  borderWidth="1"
+  borderRadius="12"
+  margin="8"
+  flex="1"
+  flexDirection="column"
+  justifyContent="flex-start"
+  padding="16"
+/>
+<style id="centered-label" fontSize="18" textAlign="center"/>
+<style id="label-bold" fontSize="20" fontWeight="bold"/>

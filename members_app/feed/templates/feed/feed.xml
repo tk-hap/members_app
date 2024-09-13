@@ -5,7 +5,7 @@
 {% endblock %}
 
 {% block content %}
-<list>
+<list trigger="refresh" action="replace-inner" href="{% url 'feed-page' 1 %}">
     <item
         style="spinner"
         key="load-more"
