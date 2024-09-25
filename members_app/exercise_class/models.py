@@ -8,6 +8,9 @@ from trainers.models import Trainer
 class ExerciseClass(models.Model):
     class_name = models.CharField(max_length=50)
     scheduled_date = models.DateTimeField()
+    duration = models.DurationField(null=True)
+    location = models.CharField(max_length=50)
+    description = models.TextField()
     participants = models.ManyToManyField(User)
     max_participants = models.IntegerField(null=True)
     trainer = models.ForeignKey(Trainer, null=True, on_delete=models.SET_NULL)

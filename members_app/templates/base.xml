@@ -1,8 +1,12 @@
 <doc xmlns="https://hyperview.org/hyperview">
   <screen>
-    <styles>{% include "styles.xml" %}</styles>
+    <styles>
+      {% include "styles.xml" %}
+      {% block styles %}
+      {% endblock %}
+    </styles>
     <body id="base-body" style="body" safe-area="true">
-      <header style="header">
+      <header style="header-container">
         {% block header %}{% endblock %}
       </header>
       <view id="base-view" style="main">

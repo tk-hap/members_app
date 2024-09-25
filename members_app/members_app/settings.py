@@ -27,6 +27,10 @@ DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
 
+CSRF_TRUSTED_ORIGINS = [
+    "http://localhost",
+    "https://django-members-app.communitygrounds.co.nz",
+]
 
 # Application definition
 
@@ -57,7 +61,7 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
-    "users.middleware.TimezoneMiddleware",
+    "members_app.middleware.TimezoneMiddleware",
 ]
 
 ROOT_URLCONF = "members_app.urls"
@@ -120,7 +124,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = "en-us"
 
-TIME_ZONE = "Pacific/Auckland"
+TIME_ZONE = "UTC"
 
 USE_I18N = True
 
@@ -182,3 +186,5 @@ NOTIFICATIONS_NOTIFICATION_MODEL = "feed.Notification"
 # Celery settings
 CELERY_BROKER_URL = "redis://redis:6379"
 CELERY_RESULT_BACKEND = "redis://redis:6379"
+
+

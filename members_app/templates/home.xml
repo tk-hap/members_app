@@ -4,7 +4,7 @@
 <text style="header-title">Home</text>
 {% endblock %}
 {% block content %}
-<text style="label-link" href="{% url 'exercise-class-all' %}">Classes</text>
+<text style="label-link" href="{% url 'upcoming-classes' %}">Classes</text>
 <text style="label-link" href="{% url 'feed-home' %}">Feed</text>
 <text style="label-link" href="{% url 'trainer-home' %}">Trainers</text>
 {% endblock %}
