@@ -1,13 +1,51 @@
 {% extends "base.xml" %}
+{% load static %}
+{% load duration_filters %}
+
+{% block styles %}
+{% include "exercise_class/styles.xml" %}
+{% endblock %}
+
 {% block content %}
-<text style="lablel">{{ class_details.class_name }}</text>
-<text style="label">{{ class_details.scheduled_date }}</text>
-<text style="label">{{ class_details.participants.count }}</text>
-{% if booked %}
-<text style="label-link" href="{% url 'cancel-booking' class_details.id %}" verb="post" action="replace">Cancel Booking</text>
-{% elif available %}
-<text style="label-link" href="{% url 'book' class_details.id %}" verb="post" action="replace">Book</text>
+<text style="label-bold centered-label">
+  {{ class_details.class_name }}
+</text>
+  <view>
+    <list style="class-detail-list">
+      <item style="item" key="date">
+        <image style="item-icon" source="{% static 'icons/event.png' %}" />
+        <text style="item-headline">{{ class_details.scheduled_date }}</text>
+      </item>
+      <item style="item" key="location">
+        <image style="item-icon" source="{% static 'icons/schedule.png' %}" />
+        <text style="item-headline">{{ class_details.duration|humanize_duration }}</text>
+      </item>
+      <item style="item" key="duration">
+        <image style="item-icon" source="{% static 'icons/location.png' %}" />
+        <text style="item-headline">{{ class_details.location }}</text>
+      </item>
+      <item style="item" key="trainer">
+        <image style="item-icon" source="{% static 'icons/person.png' %}" />
+        <text style="item-headline">{{ class_details.trainer }}</text>
+      </item>
+    </list>
+    <view style="class-description">
+      <text style="label-bold">Description</text>
+      <text style="basic-font" preformatted="true">{{ class_details.description }}</text>
+    </view>
+  </view>
+
+{% if status == "booked" %}
+<view style="button-primary" href="{% url 'cancel-booking' class_details.id %}" verb="post" action="replace">
+  <text style="label-bold">Cancel Booking</text>
+</view>
+{% elif status == "available" %}
+<view style="button-primary" href="{% url 'book' class_details.id %}" verb="post" action="replace">
+  <text style="label-bold">Book</text>
+</view>
 {% else %}
-<text style="label">Unavailable</text>
+<view style="button-primary">
+  <text style="label">Unavailable</text>
+</view>
 {% endif %}
 {% endblock %}

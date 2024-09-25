@@ -1,0 +1,29 @@
+<style
+  id="class-item"
+  alignItems="center"
+  backgroundColor="#FFFFFF"
+  borderBottomColor="#eee"
+  borderBottomWidth="1"
+  flex="1"
+  minHeight="48"
+  flexDirection="row"
+  justifyContent="flex-start"
+  paddingHorizontal="16"
+  paddingVertical="12"
+  />
+<style
+  id="class-item-text"
+  flex="1"
+  flexDirection="column"
+  />
+<style
+    id="class-details"
+    flex="1"
+    flexDirection="column"
+/>
+<style
+  id="class-description"
+  margin="8"
+  flexDirection="column"
+  padding="16"
+/>

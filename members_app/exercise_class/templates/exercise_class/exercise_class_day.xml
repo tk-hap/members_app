@@ -6,31 +6,22 @@
 {% endblock %}
 
 
-{% load tz %}
-{% get_current_timezone as TIME_ZONE %}
-{% localtime on %}
-
 {% block header %}
-<form id="class-date">
-  <date-field
-    id="date-picker"
-    modal-style="icon-small"
-    name="date"
-    placeholder="Select Date"
-    placeholderTextColor="blue"
-    label-format="MMMM DD, YYYY"
-  >
-    <behavior trigger="change" verb="get" href="{% url 'classes-for-day' %}" action="push"/>
-  </date-field>
-</form>
+<image style="header-icon-leading" source="{% static 'icons/arrow_back.png' %}" action="back" href="#"/>
+<text style="label-bold">{{ date }}</text>
 {% endblock %}
+
 {% block content %}
-<section-list id="class-list" sticky-section-titles="true">
-{% for date, classes in exercise_classes.items %}
-  <section-title>
-    <text style="day-indicator">{{ date }}</text>
-  </section-title>
-  {% for class in classes %}
+<list>
+  <items>
+  {% if not exercise_classes %}
+    <item style="class-item">
+      <view style="class-item-text">
+        <text style="item-supporting-text">No classes scheduled for this day</text>
+      </view>
+    </item>
+  {% endif %}
+  {% for class in exercise_classes %}
     <item style="class-item" key="{{ class.id }}" href="{% url 'exercise-class-detail' class.id %}">
       <image style="item-avatar" source="{{ class.trainer.picture_thumbnail.url }}"/>
       <view style="class-item-text">
@@ -45,7 +36,6 @@
       {% endif %}
     </item>
   {% endfor %}
-{% endfor %}  
-</section-list>
+  </items>
+</list>
 {% endblock %}
-{% endlocaltime %}
