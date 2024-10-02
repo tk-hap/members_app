@@ -1,0 +1,21 @@
+{% extends "base.xml" %}
+{% load static %}
+
+{% block styles %}
+  {% include "workouts/styles.xml" %}
+{% endblock %}
+
+{% block header %}
+<text style="label-bold">Workouts</text>>
+{% endblock %}
+
+{% block content %}
+<list style="items">
+    {% for workout in workouts %}
+    <item style="item" key="{{ workout.id }}" href="{% url 'workout-detail' workout.id %}">
+        <text style="item-headline">{{ workout.name }}</text>
+        <text style="item-supporting-text">{{ workout.description }}</text>
+    </item>
+    {% endfor %}
+</list>
+{% endblock %}

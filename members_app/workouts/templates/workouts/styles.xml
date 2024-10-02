@@ -1,0 +1,16 @@
+<style
+    id="workout-container"
+    flexDirection="column"
+    justifyContent="flex-start"
+    marginHorizontal="16"
+/>
+<style
+    id="workout-details"
+    flexDirection="row"
+    justifyContent="space-between"
+/>
+<style
+    id="workout-details-item"
+    flexDirection="row"
+    padding="8"
+/>

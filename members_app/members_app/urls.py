@@ -29,6 +29,7 @@ urlpatterns = [
     path("users/", include("users.urls")),
     path("feed/", include("feed.urls")),
     path("trainers/", include("trainers.urls")),
+    path("workouts/", include("workouts.urls")),
     path("home/", views.home, name="home"),
     path("index.xml", views.index, name="index"),
     path("admin/", admin.site.urls),

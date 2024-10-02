@@ -7,6 +7,7 @@
 <text style="label-link" href="{% url 'upcoming-classes' %}">Classes</text>
 <text style="label-link" href="{% url 'feed-home' %}">Feed</text>
 <text style="label-link" href="{% url 'trainer-home' %}">Trainers</text>
+<text style="label-link" href="{% url 'workouts-home' %}">Workouts</text>
 {% endblock %}
 {% block body %}
 <view id="footer" style="footer">

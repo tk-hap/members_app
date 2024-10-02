@@ -68,7 +68,6 @@
   paddingLeft="24"
   paddingRight="24"
   />
-
 <style
   id="item-headline"
   color="black"
@@ -76,7 +75,6 @@
   fontSize="16"
   fontWeight="400"
  /> 
-
  <style
   id="item-supporting-text"
   color="#49454F"
@@ -84,7 +82,6 @@
   fontSize="14"
   fontWeight="400"
   />
-
  <style
   id="item-supporting-text-trailing"
   color="#49454F"
@@ -247,6 +244,12 @@
   alignItems="center"
   justifyContent="center"
   />
+<style
+  id="divider"
+  borderBottomColor="#CAC4D0"
+  borderBottomWidth="1"
+  width="100%"
+  />
 <style 
   id="button-primary" 
   flexDirection="row"
@@ -282,6 +285,16 @@
   padding="16"
   />
 <style
+  id="content-card-elevated"
+  backgroundColor="white"
+  borderRadius="12"
+  margin="8"
+  flexDirection="column"
+  justifyContent="flex-start"
+  padding="16"
+  elevation="5"
+  />
+<style
   id="header-container"
   flexDirection="row"
   height="48"
@@ -294,5 +307,20 @@
   width="24"
   marginRight="24"
   />
+
+<style
+  id="title-medium"
+  fontSize="16"
+  fontWeight="500"
+  lineHeight="24"
+  />
+
+<style
+  id="body-medium"
+  fontSize="14"
+  fontWeight="400"
+  lineHeight="20"
+  />
+
 <style id="centered-label" fontSize="18" textAlign="center"/>
 <style id="label-bold" fontSize="20" fontWeight="bold"/>
