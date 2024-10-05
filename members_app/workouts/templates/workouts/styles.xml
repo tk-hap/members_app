@@ -4,6 +4,7 @@
     justifyContent="flex-start"
     marginHorizontal="16"
 />
+
 <style
     id="workout-details"
     flexDirection="row"
@@ -13,4 +14,17 @@
     id="workout-details-item"
     flexDirection="row"
     padding="8"
+/>
+<style
+    id="flex-container"
+    display="flex"
+    flex="1"
+    flexDirection="column"
+/>
+
+<style
+    id="webview-flex"
+    flex="1"
+    height="100%"
+
 />

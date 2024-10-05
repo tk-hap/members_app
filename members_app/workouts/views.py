@@ -15,3 +15,9 @@ def workout_detail(request, workout_id):
     workout = Workout.objects.get(pk=workout_id)
     workout_exercise = WorkoutExercise.objects.filter(workout=workout_id)
     return render(request, "workouts/workout_detail.xml", {"workout": workout, "exercises": workout_exercise })
+
+@api_view(["GET"])
+@permission_classes([IsAuthenticated])
+def exercise_detail(request, workout_exercise_id):
+    workout_exercise = WorkoutExercise.objects.get(pk=workout_exercise_id)
+    return render(request, "workouts/exercise_detail.xml", {"workout_exercise": workout_exercise})

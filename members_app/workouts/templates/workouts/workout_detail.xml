@@ -15,7 +15,7 @@
     <view style="workout-details">
       <view style="workout-details-item">
         <image style="icon-small" source="{% static 'icons/schedule.png' %}"/>
-        <text style="item-supportin-text">{{ workout.duration }}m</text>
+        <text style="item-supporting-text">{{ workout.duration }}m</text>
       </view>
       <view style="workout-details-item">
         <image style="icon-small" source="{% static 'icons/fitness_center.png' %}"/>
@@ -24,8 +24,9 @@
     </view>
     <view style="divider"/>
   </view>
+  <view style="flex-container" scroll="true">
   {% for exercise in exercises %}
-    <view style="content-card-elevated">
+    <view style="content-card-elevated" action="toggle" target="exercise-detail-{{ exercise.id }}">
         <text style="title-medium">{{ exercise.exercise }}</text>
         <text style="body-medium">
           {{ exercise.sets }} sets x {{ exercise.reps }} reps
@@ -33,6 +34,18 @@
             at {{ exercise.weight }} kgs 
           {% endif %}
         </text>
+        <view 
+          id="exercise-detail-{{ exercise.id }}"
+          style="webview-flex"
+          hide="true"
+          href="{% url 'exercise-detail' exercise.id %}"
+          trigger="visible"
+          action="replace-inner"
+          once="true"
+        >
+        <spinner/>
+        </view>
     </view>
   {% endfor %}
+  </view>
 {% endblock %}

@@ -249,6 +249,7 @@
   borderBottomColor="#CAC4D0"
   borderBottomWidth="1"
   width="100%"
+  marginVertical="8"
   />
 <style 
   id="button-primary" 
@@ -289,6 +290,7 @@
   backgroundColor="white"
   borderRadius="12"
   margin="8"
+  flex="1"
   flexDirection="column"
   justifyContent="flex-start"
   padding="16"

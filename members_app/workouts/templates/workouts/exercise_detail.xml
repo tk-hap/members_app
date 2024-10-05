@@ -1,0 +1,9 @@
+{% load workout_videos %}
+<view xmlns="https://hyperview.org/hyperview" style="webview-flex">
+    <text>{{ workout_exercise.exercise.youtube_video }}</text>
+    {% if workout_exercise.exercise.youtube_video %}
+    <web-view 
+        html='<iframe style="width: 100%; height: 100%; aspect-ratio: 16 / 9" title="YouTube Video" src="{{ workout_exercise.exercise.youtube_video|youtube_embed }}" allowfullscreen="" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" frameborder="0">'
+    />
+    {% endif %}
+</view>
