@@ -26,26 +26,26 @@
   </view>
   <view style="flex-container" scroll="true">
   {% for exercise in exercises %}
-    <view style="content-card-elevated" action="toggle" target="exercise-detail-{{ exercise.id }}">
-        <text style="title-medium">{{ exercise.exercise }}</text>
-        <text style="body-medium">
-          {{ exercise.sets }} sets x {{ exercise.reps }} reps
-          {% if exercise.weight %}
-            at {{ exercise.weight }} kgs 
-          {% endif %}
-        </text>
-        <view 
-          id="exercise-detail-{{ exercise.id }}"
-          style="webview-flex"
-          hide="true"
+    <view style="content-card-elevated" >
+      <text style="title-medium">{{ exercise.exercise }}</text>
+      <text style="body-medium">
+        {{ exercise.sets }} sets x {{ exercise.reps }} reps
+        {% if exercise.weight %}
+          at {{ exercise.weight }} kgs 
+        {% endif %}
+      </text>
+      <view style="divider"/>
+      <view id="expand-{{ exercise.id }}" style="button-text-container">
+        <text 
+          style="button-text-label"
           href="{% url 'exercise-detail' exercise.id %}"
-          trigger="visible"
-          action="replace-inner"
-          once="true"
+          action="replace"
+          target="expand-{{ exercise.id }}"
         >
-        <spinner/>
-        </view>
+          Show More
+        </text>
+      </view>
     </view>
   {% endfor %}
-  </view>
+</view>
 {% endblock %}

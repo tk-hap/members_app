@@ -23,8 +23,24 @@
 />
 
 <style
-    id="webview-flex"
+    id="web-view-flex"
     flex="1"
-    height="100%"
+    minHeight="300"
+/>
 
+<style
+    id="button-text-container"
+    minHeight="40"
+    borderRadius="20"
+    justifyContent="center"
+    flex="1"
+    flexShrink="1"
+/>
+
+<style
+    id="button-text-label"
+    fontSize="14"
+    lineHeight="20"
+    fontWeight="500"
+    color="#6750A4" 
 />
