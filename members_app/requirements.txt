@@ -10,7 +10,7 @@ click-plugins==1.1.1
 click-repl==0.3.0
 defusedxml==0.7.1
 dj-rest-auth==6.0.0
-Django==5.0.7
+Django==5.0.9
 django-appconf==1.0.6
 django-hyperview==0.0.2
 django-imagekit==5.0.0
