@@ -1,0 +1,96 @@
+<style
+    id="workout-container"
+    flexDirection="column"
+    justifyContent="flex-start"
+    marginHorizontal="16"
+/>
+
+<style
+    id="workout-item"
+    alignItems="left"
+    backgroundColor="#FFFFFF"
+    borderBottomColor="#eee"
+    borderBottomWidth="1"
+    flex="1"
+    minHeight="48"
+    flexDirection="column"
+    justifyContent="flex-start"
+    paddingLeft="24"
+    paddingRight="24"
+/>
+<style
+    id="workout-details"
+    flexDirection="row"
+    justifyContent="space-between"
+/>
+<style
+    id="workout-details-item"
+    flexDirection="row"
+    padding="8"
+/>
+<style
+    id="flex-container"
+    display="flex"
+    flex="1"
+    flexDirection="column"
+/>
+
+<style
+    id="web-view-flex"
+    flex="1"
+    minHeight="300"
+/>
+
+<style
+    id="button-text-container"
+    minHeight="40"
+    borderRadius="20"
+    justifyContent="center"
+    flex="1"
+    flexShrink="1"
+/>
+
+<style
+    id="button-text-label"
+    fontSize="14"
+    lineHeight="20"
+    fontWeight="500"
+    color="#6750A4"
+/>
+
+<style
+    id="tabs-secondary-container"
+    flexDirection="row"
+    height="48"
+/>
+
+<style
+    id="tab"
+    flex="1"
+    justifyContent="center"
+    alignItems="center"
+    backgroundColor="white"
+>
+    <modifier selected="true">
+        <style
+            id="tab"
+            borderBottomColor="#6750A4"
+            borderBottomWidth="2"
+        />
+    </modifier>
+</style>
+
+<style
+    id="tab-label"
+    fontsize="14"
+    lineHeight="20"
+    fontWeight="500"
+    color="#49454F"
+>
+    <modifier selected="true">
+        <style
+            id="tab-label"
+            color="#1D1B20"
+        />
+    </modifier>
+</style>

@@ -1,0 +1,39 @@
+{% load workout_videos %}
+<view 
+    xmlns="https://hyperview.org/hyperview" 
+    >
+    <view
+        id="expand-{{ workout_exercise.id }}"
+        style="button-text-container"     
+        hide="true"
+    >
+        <behavior trigger="press" action="show" target="exercise-detail-{{ workout_exercise.id }}"/>
+        <behavior trigger="press" action="hide" target="expand-{{ workout_exercise.id }}"/>
+        <text style="button-text-label">
+            Show More
+        </text>
+    </view>
+    <view 
+        id="exercise-detail-{{ workout_exercise.id }}"
+        hide="false"
+        style="web-view-flex"
+    >
+        <text>
+            {{ workout_exercise.exercise.description }}
+        </text>
+        <web-view 
+            url="{{ workout_exercise.exercise.youtube_video|youtube_embed }}"
+        />
+        <view
+            id="shrink-{{ exercise.id }}"
+            style="button-text-container"
+            hide="false"
+            >
+            <behavior trigger="press" action="hide" target="exercise-detail-{{ workout_exercise.id }}"/>
+            <behavior trigger="press" action="show" target="expand-{{ workout_exercise.id }}" />
+            <text style="button-text-label">
+                Show Less
+            </text>
+        </view>
+    </view>
+</view>

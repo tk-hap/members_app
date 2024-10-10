@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     "authentication.apps.AuthenticationConfig",
     "users.apps.UsersConfig",
     "exercise_class.apps.ExerciseClassConfig",
+    "workouts.apps.WorkoutsConfig",
     "django_hv",
     "rest_framework",
     "rest_framework.authtoken",

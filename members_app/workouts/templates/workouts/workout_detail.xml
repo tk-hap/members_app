@@ -1,0 +1,51 @@
+{% extends "base.xml" %}
+{% load static %}
+
+{% block styles %}
+  {% include "workouts/styles.xml" %}
+{% endblock %}
+
+{% block header %}
+{% endblock %}
+
+{% block content %}
+  <view style="workout-container">
+    <text style="title-medium">{{ workout.name }}</text>
+    <text style="body-medium" preformatted="true">{{ workout.description }}</text>
+    <view style="workout-details">
+      <view style="workout-details-item">
+        <image style="icon-small" source="{% static 'icons/schedule.png' %}"/>
+        <text style="item-supporting-text">{{ workout.duration }}m</text>
+      </view>
+      <view style="workout-details-item">
+        <image style="icon-small" source="{% static 'icons/fitness_center.png' %}"/>
+        <text style="item-supporting-text">{{ workout.difficulty }}</text>
+      </view>
+    </view>
+    <view style="divider"/>
+  </view>
+  <view style="flex-container" scroll="true">
+  {% for exercise in exercises %}
+    <view style="content-card-elevated" >
+      <text style="title-medium">{{ exercise.exercise }}</text>
+      <text style="body-medium">
+        {{ exercise.sets }} sets x {{ exercise.reps }} reps
+        {% if exercise.weight %}
+          at {{ exercise.weight }} kgs 
+        {% endif %}
+      </text>
+      <view style="divider"/>
+      <view id="expand-{{ exercise.id }}" style="button-text-container">
+        <text 
+          style="button-text-label"
+          href="{% url 'exercise-detail' exercise.id %}"
+          action="replace"
+          target="expand-{{ exercise.id }}"
+        >
+          Show More
+        </text>
+      </view>
+    </view>
+  {% endfor %}
+</view>
+{% endblock %}
