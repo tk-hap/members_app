@@ -5,8 +5,13 @@ class WorkoutExerciseInline(admin.TabularInline):
     model = WorkoutExercise
     extra = 1  # Number of extra forms to display
 
+class WorkoutAssignmentInline(admin.TabularInline):
+    model = WorkoutAssignment
+    extra = 1  # Number of extra forms to display
+
+
 class WorkoutAdmin(admin.ModelAdmin):
-    inlines = [WorkoutExerciseInline]
+    inlines = [WorkoutExerciseInline, WorkoutAssignmentInline]
     list_display = ('name', 'created_by', 'created_at')
     search_fields = ('name', 'created_by__username')
 

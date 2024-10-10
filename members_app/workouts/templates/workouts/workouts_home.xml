@@ -1,0 +1,46 @@
+{% extends "base.xml" %}
+{% load static %}
+
+{% block styles %}
+  {% include "workouts/styles.xml" %}
+{% endblock %}
+
+{% block header %}
+<text style="label-bold">Workouts</text>>
+{% endblock %}
+
+{% block content %}
+<select-single name="tab" style="tabs-secondary-container">
+  <option 
+    value="all"
+    style="tab"
+    trigger="select"
+    href="{% url 'all-workouts-list' %}"
+    action="replace-inner"
+    target="tab-content"
+    selected="true"
+    show-during-load="spinner"
+    hide-during-load="tab-content"
+    >
+    <text style="tab-label">All</text>
+  </option>
+  <option 
+    value="assigned"
+    style="tab"
+    trigger="select"
+    href="{% url 'assigned-workouts-list' %}"
+    action="replace-inner"
+    target="tab-content"
+    show-during-load="spinner"
+    hide-during-load="tab-content"
+    >
+    <text style="tab-label">Assigned</text>
+  </option>
+</select-single>"
+<view id="tab-content">
+  {% include "workouts/workouts_list.xml" %}
+</view>
+<view id="spinner" hide="true">
+  <spinner/>
+</view> 
+{% endblock %}
