@@ -1,0 +1,63 @@
+{% load static %}
+<view id="footer" style="navbar">
+  <view 
+    style="bottom-tab {% if selected_tab == 'home' %}bottom-tab-selected{% endif %}"
+    href-style="bottom-tab"
+    action="navigate"
+    target="home-tab"
+    >
+    <image
+      source="{% static 'icons/home.png' %}"
+      style="bottom-tab-icon {% if selected_tab == 'home' %}bottom-tab-selected{% endif %}"
+    />
+    <text style="navbar-label {% if selected_tab == 'home' %}navbar-label-selected{% endif %}">Home</text>
+  </view>
+  <view
+    style="bottom-tab {% if selected_tab == 'workouts' %}bottom-tab-selected{% endif %}"
+    href-style="bottom-tab"
+    action="navigate"
+    target="workouts-tab"
+  > 
+    <image
+      source="{% static 'icons/exercise.png' %}"
+      style="bottom-tab-icon {% if selected_tab == 'workouts' %}bottom-tab-selected{% endif %}"
+    />
+    <text style="navbar-label {% if selected_tab == 'workouts' %}navbar-label-selected{% endif %}">Workouts</text>
+  </view>
+  <view
+    style="bottom-tab {% if selected_tab == 'classes' %}bottom-tab-selected{% endif %}"
+    href-style="bottom-tab"
+    action="navigate"
+    target="classes-tab"
+  > 
+    <image
+      source="{% static 'icons/calendar_today.png' %}"
+      style="bottom-tab-icon {% if selected_tab == 'classes' %}bottom-tab-selected{% endif %}"
+    />
+    <text style="navbar-label {% if selected_tab == 'classes' %}navbar-label-selected{% endif %}">Classes</text>
+  </view>
+  <view
+    style="bottom-tab {% if selected_tab == 'trainers' %}bottom-tab-selected{% endif %}"
+    href-style="bottom-tab"
+    action="navigate"
+    target="trainers-tab"
+  > 
+    <image
+      source="{% static 'icons/group.png' %}"
+      style="bottom-tab-icon {% if selected_tab == 'trainers' %}bottom-tab-selected{% endif %}"
+    />
+    <text style="navbar-label {% if selected_tab == 'trainers' %}navbar-label-selected{% endif %}">Trainers</text>
+  </view>
+  <view
+    style="bottom-tab {% if selected_tab == 'feed' %}bottom-tab-selected{% endif %}"
+    href-style="bottom-tab"
+    action="navigate"
+    target="feed-tab"
+  > 
+    <image
+      source="{% static 'icons/inbox.png' %}"
+      style="bottom-tab-icon {% if selected_tab == 'feed' %}bottom-tab-selected{% endif %}"
+    />
+    <text style="navbar-label {% if selected_tab == 'feed' %}navbar-label-selected{% endif %}">Feed</text>
+  </view>
+</view>

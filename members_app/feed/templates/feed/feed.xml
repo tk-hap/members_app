@@ -18,25 +18,6 @@
     </item>
 </list>
 {% endblock %}
-{% block body %}
-<view id="footer" style="footer">
-  <view
-    style="bottom-tab"
-    href-style="bottom-tab"
-    action="navigate"
-    target="home-tab"
-  > 
-    <image
-      source="{% static 'icons/home.png' %}"
-      style="bottom-tab-icon"
-    />
-    <text style="bottom-tab-label">Home</text>
-  </view>
-  <view style="bottom-tab bottom-tab-selected">
-    <image
-      source="{% static 'icons/feed.png' %}"
-      style="bottom-tab-icon bottom-tab-selected"
-    />
-    <text style="bottom-tab-label bottom-tab-label-selected">Feed</text>
-  </view>
+{% block footer %}\
+  {% include "navbar.xml" with selected_tab="feed" %}
 {% endblock %}

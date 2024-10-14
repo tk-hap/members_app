@@ -9,7 +9,7 @@
             <view style="button-icon" href="mailto:{{ trainer.email }}" action="deep-link">
                 <image style="icon-small" source="{% static 'icons/mail.png' %}"/>
             </view>
-            <view style="button-icon" href="tel:{{ trainer.phone_number }}" action="deep-link">
+            <view style="button-icon" href="sms:{{ trainer.phone_number }}" action="deep-link">
                 <image style="icon-small" source="{% static 'icons/call.png' %}"/>
             </view>
         </view>

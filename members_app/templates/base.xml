@@ -12,7 +12,7 @@
       <view id="base-view" style="main">
         {% block content %}{% endblock %}
       </view>
-      {% block body %}{% endblock %}
+      {% block footer %}{% endblock %}
     </body>
   </screen>
 </doc>

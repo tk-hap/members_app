@@ -1,0 +1,30 @@
+## Workouts
+- Users able to save workouts to their "assigned"
+- Workouts renamed to Programs
+- Pull to reload on all the things
+
+## Classes
+- Make class bookings page scrollable
+- Timezones classes
+- Include date in cancellation notification
+- Recurring Classes
+- Save classes to calendar
+- Spots left
+- Notification after completed, prompt star ranking
+
+## Trainers
+- Trainer profile message shortcut
+
+## Home page
+- Fix login page displaying on clicking home
+- Gym Timetable
+- My Bookings
+- Explore? Featured?
+- Classes Booked?
+
+## Other
+- Analytics?
+- GymLink? GymsLink.com
+- Authentication. Invite via email with password reset?
+- Admin Site - Django Admin with custom skin. Unfold.
+- Customization - Gym Logo
