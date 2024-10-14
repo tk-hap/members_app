@@ -267,11 +267,11 @@
   id="button-icon"
   height="40"
   width="40"
-  backgroundColor="#4A90E2"
+  backgroundColor="#E8DEF8"
   borderRadius="200"
   justifyContent="center"
   alignItems="center"
-  margin="5"
+  margin="8"
   />  
 <style
   id="content-card-outlined"
