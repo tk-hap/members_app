@@ -1,28 +1,28 @@
 <style id="header-title" fontSize="24" fontWeight="600"/>
 <style
-  id="footer"
-  flex="1"
+  id="navbar"
+  height="80"
+  width="100%"
+  elevation="3"
   flexDirection="row"
-  flexShrink="1"
-  flexGrow="0"
-  bottom="45"
   alignItems="stretch"
   justifyContent="space-around"
 />
 <style
   id="bottom-tab"
   flex="1"
-  height="48"
+  height="80"
   justifyContent="center"
   alignItems="center"
 />
 <style
-  id="bottom-tab-label"
-  fontSize="20"
-  fontWeight="bold"
-  color="#cccccc"
+  id="navbar-label"
+  fontSize="12"
+  lineHeight="16"
+  fontWeight="500"
+  color="#49454F"
 />
-<style id="bottom-tab-label-selected" color="#4778FF"/>
+<style id="navbar-label-selected" color="blue"/>
 <style id="bottom-tab-selected"/>
 <style
   id="bottom-tab-icon"

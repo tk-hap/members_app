@@ -49,3 +49,6 @@
 </section-list>
 {% endblock %}
 {% endlocaltime %}
+{% block footer %}
+  {% include "navbar.xml" with selected_tab="classes" %}
+{% endblock %}

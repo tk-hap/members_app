@@ -3,6 +3,9 @@
     <nav-route id="tabs-route" href="">
       <navigator id="tabs" type="tab">
         <nav-route id="home-tab" href="{% url 'home' %}" />
+        <nav-route id="classes-tab" href="{% url 'upcoming-classes' %}" />
+        <nav-route id="workouts-tab" href="{% url 'workouts-home' %}" />
+        <nav-route id="trainers-tab" href="{% url 'trainer-home' %}" />
         <nav-route id="feed-tab" href="{% url 'feed-home' %}" />
       </navigator>
     </nav-route>
