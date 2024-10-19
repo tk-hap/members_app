@@ -1,3 +1,15 @@
 from django.contrib import admin
+from unfold.admin import ModelAdmin
 
-# Register your models here.
+from .models import Trainer
+
+@admin.register(Trainer)
+class TrainerAdmin(ModelAdmin):
+    list_display = [
+        "first_name",
+        "last_name",
+        "email",
+        "phone_number",
+        "featured",
+    ]
+    model = Trainer

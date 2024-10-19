@@ -1,6 +1,15 @@
 from django.contrib import admin
-from .models import ExerciseClass, Trainer
+from unfold.admin import ModelAdmin
+from .models import ExerciseClass
 
-# Register your models here.
-admin.site.register(ExerciseClass)
-admin.site.register(Trainer)
+
+@admin.register(ExerciseClass)
+class ExerciseClassAdmin(ModelAdmin):
+    list_display = [
+        "class_name",
+        "scheduled_date",
+        "trainer",
+        "duration",
+        "max_participants",
+    ]
+    model = ExerciseClass
