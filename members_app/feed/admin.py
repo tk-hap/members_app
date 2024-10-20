@@ -1,9 +1,13 @@
 from django.contrib import admin
+from unfold.admin import ModelAdmin
 from .models import Notification
 from .forms import SimpleNotificationForm
 
 
-class SimpleNotificationAdmin(admin.ModelAdmin):
+admin.site.unregister(Notification)
+
+@admin.register(Notification)
+class SimpleNotificationAdmin(ModelAdmin):
     form = SimpleNotificationForm
     list_display = ["recipient", "level", "description"]
 
@@ -13,9 +17,3 @@ class SimpleNotificationAdmin(admin.ModelAdmin):
         if not obj.verb:
             obj.verb = "Message"
         super().save_model(request, obj, form, change)
-
-
-admin.site.unregister(Notification)
-admin.site.register(
-    Notification, SimpleNotificationAdmin
-)  # Register with the custom admin
