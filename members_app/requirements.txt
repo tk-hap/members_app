@@ -6,7 +6,7 @@ certifi==2024.7.4
 charset-normalizer==3.3.2
 defusedxml==0.7.1
 dj-rest-auth==6.0.0
-Django==5.0.7
+Django==5.0.9
 django-appconf==1.0.6
 django-hyperview==0.0.2
 django-imagekit==5.0.0
