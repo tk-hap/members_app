@@ -29,23 +29,25 @@
         <text style="item-headline">{{ class_details.trainer }}</text>
       </item>
     </list>
-    <view style="class-description">
-      <text style="label-bold">Description</text>
-      <text style="basic-font" preformatted="true">{{ class_details.description }}</text>
+</view>
+<view style="container">
+    <view scroll="true" content-container-style="scroll-view">
+      <view>
+        <text style="basic-font" preformatted="true">{{ class_details.description }}</text>
+      </view>
     </view>
-  </view>
-
+</view>
 {% if status == "booked" %}
-<view style="button-primary" href="{% url 'cancel-booking' class_details.id %}" verb="post" action="replace">
-  <text style="label-bold">Cancel Booking</text>
+<view style="button-filled" href="{% url 'cancel-booking' class_details.id %}" verb="post" action="replace">
+  <text style="button-filled-label">Cancel Booking</text>
 </view>
 {% elif status == "available" %}
-<view style="button-primary" href="{% url 'book' class_details.id %}" verb="post" action="replace">
-  <text style="label-bold">Book</text>
+<view style="button-filled" href="{% url 'book' class_details.id %}" verb="post" action="replace">
+  <text style="button-filled-label">Book</text>
 </view>
 {% else %}
-<view style="button-primary">
-  <text style="label">Unavailable</text>
+<view style="button-filled button-disabled">
+  <text style="button-filled-label button-disabled-label">Unavailable</text>
 </view>
 {% endif %}
 {% endblock %}
