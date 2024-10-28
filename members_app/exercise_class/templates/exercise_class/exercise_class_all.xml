@@ -40,9 +40,9 @@
         <text style="item-supporting-text">Unavailable</text>
       {% else %}
         <text style="item-supporting-text">Available</text>
-        <text style="item-supporting-text-trailing">{{ class.scheduled_date.time}}</text>
       {% endif %}
       </view>
+      <text style="item-supporting-text-trailing">{{ class.scheduled_date.time}}</text>
     </item>
   {% endfor %}
 {% endfor %}  
