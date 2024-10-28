@@ -282,12 +282,11 @@
   />  
 <style
   id="button-disabled"
-  backgroundColor="#1D1B20"
-  opacity="0.12"
+  backgroundColor="#C6C6C6"
 />
 <style
   id="button-disabled-label"
-  color="#C6C6C6"
+  color="grey"
 />
 <style
   id="content-card-outlined"
