@@ -22,8 +22,11 @@
     flexDirection="column"
 />
 <style
-  id="class-description"
-  margin="8"
-  flexDirection="column"
-  padding="16"
+  id="container"
+  flex="1"
+/>
+<style
+  id="scroll-view"
+  flexGrow="1"
+  paddingHorizontal="10"
 />

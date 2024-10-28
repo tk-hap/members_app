@@ -252,9 +252,9 @@
   marginVertical="8"
   />
 <style 
-  id="button-primary" 
+  id="button-filled" 
   flexDirection="row"
-  backgroundColor="#4A90E2"
+  backgroundColor="#6750A4"
   borderRadius="20"
   height="40"
   marginHorizontal="10"
@@ -262,6 +262,13 @@
   justifyContent="center"
   alignItems="center"
   margin="5"
+  />
+<style
+  id="button-filled-label"
+  lineHeight="20"
+  fontSize="14"
+  fontWeight="500"
+  color="#FFFFFF"
   />
 <style 
   id="button-icon"
@@ -273,6 +280,14 @@
   alignItems="center"
   margin="8"
   />  
+<style
+  id="button-disabled"
+  backgroundColor="#C6C6C6"
+/>
+<style
+  id="button-disabled-label"
+  color="grey"
+/>
 <style
   id="content-card-outlined"
   backgroundColor="white"

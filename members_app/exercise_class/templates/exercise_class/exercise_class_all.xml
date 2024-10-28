@@ -38,17 +38,17 @@
         <text style="item-supporting-text">Trainer - {{ class.trainer }}</text>
       {% if class.participants.count >= class.max_participants %}
         <text style="item-supporting-text">Unavailable</text>
-        {% else %}
+      {% else %}
         <text style="item-supporting-text">Available</text>
+      {% endif %}
       </view>
       <text style="item-supporting-text-trailing">{{ class.scheduled_date.time}}</text>
-      {% endif %}
     </item>
   {% endfor %}
 {% endfor %}  
 </section-list>
 {% endblock %}
-{% endlocaltime %}
 {% block footer %}
   {% include "navbar.xml" with selected_tab="classes" %}
 {% endblock %}
+{% endlocaltime %}
