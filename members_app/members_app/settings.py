@@ -53,6 +53,7 @@ INSTALLED_APPS = [
     "notifications",
     "feed.apps.FeedConfig",  # This needs to be imported after the notifications app
     "imagekit",
+    "recurrence",
 ]
 
 MIDDLEWARE = [

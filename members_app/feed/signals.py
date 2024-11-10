@@ -1,18 +1,20 @@
 from notifications.signals import notify
 from django.dispatch import receiver
 from django.db.models.signals import pre_delete
-from exercise_class.models import ExerciseClass
+from exercise_class.models import ExerciseClassOccurrence
 from .tasks import send_push_message_task
 
 
-@receiver(pre_delete, sender=ExerciseClass)
+@receiver(pre_delete, sender=ExerciseClassOccurrence)
 def notify_participants(sender, instance, **kwargs):
     if not instance.is_upcoming():
         return
 
-    message = f"Class {instance.class_name} has been cancelled"
+    message = f"Class {instance.event.class_name} has been cancelled"
 
-    for participant in instance.participants.all():
+    participants = instance.get_participants()
+
+    for participant in participants:
         send_push_message_task.delay(
             token=participant.push_token,
             message=message,
@@ -20,7 +22,7 @@ def notify_participants(sender, instance, **kwargs):
 
     notify.send(
         sender=instance,
-        recipient=instance.participants.all(),
+        recipient=participants,
         verb="Booking",
         description=message,
         level="warning",

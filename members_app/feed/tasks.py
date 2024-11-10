@@ -4,7 +4,7 @@ from celery import shared_task
 from django.utils import timezone
 from requests.exceptions import ConnectionError, HTTPError
 from exponent_server_sdk import PushClient, PushMessage, PushServerError, DeviceNotRegisteredError, PushTicketError
-from exercise_class.models import ExerciseClass
+from exercise_class.models import ExerciseClassOccurrence
 
 
 logger = logging.getLogger(__name__)
@@ -55,7 +55,7 @@ def send_push_message_task(self, token, message, extra=None):
 def remind_upcoming_classes():
     now = timezone.now()
     hour_later = now + timezone.timedelta(hours=1)
-    upcoming_classes = ExerciseClass.objects.filter(reminder_sent="False", scheduled_date__gte=now, scheduled_date__lte=hour_later)
+    upcoming_classes = ExerciseClassOccurrence.objects.filter(reminder_sent="False", scheduled_date__gte=now, scheduled_date__lte=hour_later)
 
     for exercise_class in upcoming_classes:
         message = f"Reminder: Your class {exercise_class.class_name} is starting soon!"

@@ -32,17 +32,17 @@
   </section-title>
   {% for class in classes %}
     <item style="class-item" key="{{ class.id }}" href="{% url 'exercise-class-detail' class.id %}">
-      <image style="item-avatar" source="{{ class.trainer.picture_thumbnail.url }}"/>
+      <image style="item-avatar" source="{{ class.event.trainer.picture_thumbnail.url }}"/>
       <view style="class-item-text">
-        <text style="item-headline">{{ class.class_name }}</text>
-        <text style="item-supporting-text">Trainer - {{ class.trainer }}</text>
+        <text style="item-headline">{{ class.event.class_name }}</text>
+        <text style="item-supporting-text">Trainer - {{ class.event.trainer }}</text>
       {% if class.participants.count >= class.max_participants %}
         <text style="item-supporting-text">Unavailable</text>
       {% else %}
         <text style="item-supporting-text">Available</text>
       {% endif %}
       </view>
-      <text style="item-supporting-text-trailing">{{ class.scheduled_date.time}}</text>
+      <text style="item-supporting-text-trailing">{{ class.event.start_time }}</text>
     </item>
   {% endfor %}
 {% endfor %}  
