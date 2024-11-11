@@ -14,7 +14,7 @@ class ExerciseClassEvent(models.Model):
     trainer = models.ForeignKey(Trainer, null=True, on_delete=models.SET_NULL)
     start_time = models.TimeField()
     duration = models.DurationField()
-    schedule = RecurrenceField(blank=True, null=True)  # Recurrence field for scheduling
+    schedule = RecurrenceField()  # Recurrence field for scheduling
 
     def __str__(self):
         return self.class_name
