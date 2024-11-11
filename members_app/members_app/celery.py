@@ -21,4 +21,8 @@ app.conf.beat_schedule = {
         'task': 'feed.tasks.remind_upcoming_classes',
         'schedule': crontab(minute='*/30'),  # Run every 30 minutes
     },
+    'generate-occurrences-every-day': {
+        'task': 'exercise_class.tasks.generate_occurrences',
+        'schedule': crontab(minute=0, hour=0),  # Run every day at midnight
+    },
 }
