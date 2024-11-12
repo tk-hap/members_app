@@ -6,11 +6,13 @@
 {% include "exercise_class/styles.xml" %}
 {% endblock %}
 
+{% block header %}
+<image style="header-icon-leading" source="{% static 'icons/arrow_back.png' %}" action="back" href="#"/>
+<text style="appbar-headline">{{ class_details.class_name }}</text>
+{% endblock %}
+
 {% block content %}
-<text style="label-bold centered-label">
-  {{ class_details.class_name }}
-</text>
-  <view>
+<view>
     <list style="class-detail-list">
       <item style="item" key="date">
         <image style="item-icon" source="{% static 'icons/event.png' %}" />
