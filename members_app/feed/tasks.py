@@ -58,7 +58,7 @@ def remind_upcoming_classes():
     upcoming_classes = ExerciseClassOccurrence.objects.filter(reminder_sent="False", scheduled_date__gte=now, scheduled_date__lte=hour_later)
 
     for exercise_class in upcoming_classes:
-        message = f"Reminder: Your class {exercise_class.class_name} is starting soon!"
+        message = f"Reminder: Your class {exercise_class.event.class_name} is starting soon!"
         for participant in exercise_class.participants.all():
             if participant.push_token:
                 send_push_message_task.delay(
