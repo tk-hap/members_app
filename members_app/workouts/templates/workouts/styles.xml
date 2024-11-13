@@ -38,9 +38,11 @@
 <style
     id="web-view-flex"
     flex="1"
+/>
+<style
+    id="yt-video-container"
     minHeight="300"
 />
-
 <style
     id="button-text-container"
     minHeight="40"
