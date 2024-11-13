@@ -34,7 +34,6 @@
     flex="1"
     flexDirection="column"
 />
-
 <style
     id="web-view-flex"
     flex="1"
@@ -59,13 +58,11 @@
     fontWeight="500"
     color="#6750A4"
 />
-
 <style
     id="tabs-secondary-container"
     flexDirection="row"
     height="48"
 />
-
 <style
     id="tab"
     flex="1"
