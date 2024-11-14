@@ -86,8 +86,8 @@ def list_classes_for_day(request):
 
     date = timezone.datetime.strptime(req_date, "%Y-%m-%d").date()
 
-    exercise_classes = ExerciseClassEvent.objects.filter(
-        scheduled_date__date=date
+    exercise_classes = ExerciseClassOccurrence.objects.filter(
+        scheduled_date=date
     ).order_by("scheduled_date")
 
     return render(
