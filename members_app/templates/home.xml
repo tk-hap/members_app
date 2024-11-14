@@ -2,7 +2,7 @@
 {% load static %}
 {% block header %}
 <image style="appbar-gym-logo" source="{% static 'gym/example-logo.png' %}"/> <!-- TODO: Get Gym Logo from gym model?-->
-<text style="appbar-headline">Home</text> 
+<text style="appbar-headline-centered">Home</text> 
 {% endblock %}
 {% block content %}
 <text style="label-link" href="{% url 'upcoming-classes' %}">Classes</text>

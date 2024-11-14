@@ -7,7 +7,7 @@
 
 {% block header %}
 <image style="appbar-gym-logo" source="{% static 'gym/example-logo.png' %}"/>
-<text style="appbar-headline">Workouts</text>>
+<text style="appbar-headline-centered">Workouts</text>>
 {% endblock %}
 
 {% block content %}

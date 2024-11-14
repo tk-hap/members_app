@@ -2,7 +2,7 @@
 {% load static %}
 {% block header %}
 <image style="appbar-gym-logo" source="{% static 'gym/example-logo.png' %}"/>
-<text style="appbar-headline">Feed</text>
+<text style="appbar-headline-centered">Feed</text>
 {% endblock %}
 
 {% block content %}
