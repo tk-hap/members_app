@@ -1,7 +1,8 @@
 {% extends "base.xml" %}
 {% load static %}
 {% block header %}
-<text style="header-title">Trainers</text>
+<image style="appbar-gym-logo" source="{% static 'gym/example-logo.png' %}"/>
+<text style="appbar-headline-centered">Trainers</text>
 {% endblock %}
 {% block content %}
 <view scroll="true">

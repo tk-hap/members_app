@@ -6,7 +6,7 @@
       {% endblock %}
     </styles>
     <body id="base-body" style="body" safe-area="true">
-      <header style="header-container">
+      <header style="appbar-container">
         {% block header %}{% endblock %}
       </header>
       <view id="base-view" style="main">

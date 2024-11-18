@@ -86,13 +86,10 @@ def list_classes_for_day(request):
 
     date = timezone.datetime.strptime(req_date, "%Y-%m-%d").date()
 
-    exercise_classes = (
-        ExerciseClassOccurrence.objects.filter(
-            scheduled_date=date
-        )
-        .select_related("event")
-        .order_by("scheduled_date")
-    )
+    exercise_classes = ExerciseClassOccurrence.objects.filter(
+        scheduled_date=date
+    ).order_by("scheduled_date")
+
     return render(
         request,
         "exercise_class/exercise_class_day.xml",

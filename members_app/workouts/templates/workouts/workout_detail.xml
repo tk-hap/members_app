@@ -6,11 +6,12 @@
 {% endblock %}
 
 {% block header %}
+<image style="header-icon-leading" source="{% static 'icons/arrow_back.png' %}" action="back" href="#"/>
+<text style="appbar-headline">{{ workout.name }}</text>
 {% endblock %}
 
 {% block content %}
   <view style="workout-container">
-    <text style="title-medium">{{ workout.name }}</text>
     <text style="body-medium" preformatted="true">{{ workout.description }}</text>
     <view style="workout-details">
       <view style="workout-details-item">

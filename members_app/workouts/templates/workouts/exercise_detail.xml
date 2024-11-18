@@ -16,14 +16,17 @@
     <view 
         id="exercise-detail-{{ workout_exercise.id }}"
         hide="false"
-        style="web-view-flex"
+        style="web-view-flex {% if workout_exercise.exercise.youtube_video %}yt-video-container{% endif %}"
     >
         <text>
             {{ workout_exercise.exercise.description }}
         </text>
+    {% if workout_exercise.exercise.youtube_video %}
         <web-view 
             url="{{ workout_exercise.exercise.youtube_video|youtube_embed }}"
         />
+        <text>Youtube video true</text>
+    {% endif %}
         <view
             id="shrink-{{ exercise.id }}"
             style="button-text-container"

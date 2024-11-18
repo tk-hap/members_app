@@ -8,7 +8,7 @@
 
 {% block header %}
 <image style="header-icon-leading" source="{% static 'icons/arrow_back.png' %}" action="back" href="#"/>
-<text style="label-bold">{{ date }}</text>
+<text style="appbar-headline">{{ date }}</text>
 {% endblock %}
 
 {% block content %}

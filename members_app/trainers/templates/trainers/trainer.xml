@@ -1,10 +1,19 @@
 {% extends "base.xml" %}
 {% load static %}
+
+{% block styles %}
+    {% include "trainers/styles.xml" %}
+{% endblock %}
+
+{% block header %}
+<image style="header-icon-leading" source="{% static 'icons/arrow_back.png' %}" action="back" href="#"/>
+{% endblock %}
+
 {% block content %}
 <view scroll="true">
     <view style="profile-page">
         <image style="profile-page-picture" source="{{ trainer.picture_thumbnail.url }}"/>
-        <text style="label-bold">{{ trainer.first_name }} {{ trainer.last_name }}</text>
+        <text style="trainer-name">{{ trainer.first_name }} {{ trainer.last_name }}</text>
         <view style="contact-info">
             <view style="button-icon" href="mailto:{{ trainer.email }}" action="deep-link">
                 <image style="icon-small" source="{% static 'icons/mail.png' %}"/>

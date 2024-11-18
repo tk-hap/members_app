@@ -6,7 +6,8 @@
 {% endblock %}
 
 {% block header %}
-<text style="label-bold">Workouts</text>>
+<image style="appbar-gym-logo" source="{% static 'gym/example-logo.png' %}"/>
+<text style="appbar-headline-centered">Workouts</text>>
 {% endblock %}
 
 {% block content %}

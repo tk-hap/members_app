@@ -1,7 +1,7 @@
 {% extends "base.xml" %}
 {% load hv_tags %}
 {% block header %}
-<text style="header-title">Login</text>
+<text style="appbar-headline">Login</text>
 {% endblock %}
 
 {% block content %}

@@ -34,13 +34,14 @@
     flex="1"
     flexDirection="column"
 />
-
 <style
     id="web-view-flex"
     flex="1"
+/>
+<style
+    id="yt-video-container"
     minHeight="300"
 />
-
 <style
     id="button-text-container"
     minHeight="40"
@@ -57,13 +58,11 @@
     fontWeight="500"
     color="#6750A4"
 />
-
 <style
     id="tabs-secondary-container"
     flexDirection="row"
     height="48"
 />
-
 <style
     id="tab"
     flex="1"

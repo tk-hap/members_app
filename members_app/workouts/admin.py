@@ -1,14 +1,14 @@
 from django.contrib import admin
-from unfold.admin import ModelAdmin
+from unfold.admin import ModelAdmin, TabularInline, StackedInline
 from .models import Exercise, Workout, WorkoutExercise, WorkoutAssignment
 
 
-class WorkoutExerciseInline(admin.TabularInline):
+class WorkoutExerciseInline(TabularInline):
     model = WorkoutExercise
     extra = 1  # Number of extra forms to display
 
 
-class WorkoutAssignmentInline(admin.TabularInline):
+class WorkoutAssignmentInline(TabularInline):
     model = WorkoutAssignment
     extra = 1  # Number of extra forms to display
 
