@@ -6,8 +6,13 @@
 {% endblock %}
 
 {% block header %}
-<image style="header-icon-leading" source="{% static 'icons/arrow_back.png' %}" action="back" href="#"/>
-<text style="appbar-headline">{{ workout.name }}</text>
+<image style="appbar-icon-leading" source="{% static 'icons/arrow_back.png' %}" action="back" href="#"/>
+<text style="appbar-headline-centered">{{ workout.name }}</text>
+{% if saved %}
+  {% include "workouts/saved.xml" %}
+{% else %}
+  {% include "workouts/not_saved.xml" %}
+{% endif %}
 {% endblock %}
 
 {% block content %}

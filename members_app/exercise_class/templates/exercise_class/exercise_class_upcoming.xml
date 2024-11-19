@@ -15,17 +15,6 @@
 <text style="appbar-headline-centered">Classes</text>
 {% endblock %}
 
-<form id="class-date">
-  <date-field
-    id="date-picker"
-    name="date"
-    placeholder="Select Date"
-    label-format="MMMM DD, YYYY"
-    value="Select date"
-  >
-    <behavior trigger="change" verb="get" href="{% url 'classes-for-day' %}" action="push"/>
-  </date-field>
-</form>
 {% block content %}
 <section-list id="class-list" sticky-section-titles="true">
 {% for date, classes in exercise_classes.items %}
