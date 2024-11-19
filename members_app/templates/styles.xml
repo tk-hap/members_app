@@ -55,6 +55,18 @@
   textAlign="center"
 />
 <style
+  id="appbar-icon-leading"
+  height="24"
+  width="24"
+  marginRight="24"
+  />
+<style
+  id="appbar-icon-trailing"
+  height="24"
+  width="24"
+  marginLeft="24"
+  />
+<style
   id="appbar-gym-logo"
   height="36"
   width="36"
@@ -343,12 +355,6 @@
   justifyContent="flex-start"
   padding="16"
   elevation="5"
-  />
-<style
-  id="header-icon-leading"
-  height="24"
-  width="24"
-  marginRight="24"
   />
 
 <style

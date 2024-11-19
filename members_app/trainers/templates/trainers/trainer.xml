@@ -6,7 +6,7 @@
 {% endblock %}
 
 {% block header %}
-<image style="header-icon-leading" source="{% static 'icons/arrow_back.png' %}" action="back" href="#"/>
+<image style="appbar-icon-leading" source="{% static 'icons/arrow_back.png' %}" action="back" href="#"/>
 {% endblock %}
 
 {% block content %}

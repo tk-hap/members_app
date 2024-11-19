@@ -1,0 +1,9 @@
+{% load static %}
+<image 
+  xmlns="https://hyperview.org/hyperview"
+  style="appbar-icon-trailing"
+  source="{% static 'icons/favourite.png' %}"
+  action="replace"
+  verb="post"
+  href="{% url 'save-workout' workout.id %}"
+/>

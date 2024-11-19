@@ -35,7 +35,7 @@
     show-during-load="spinner"
     hide-during-load="tab-content"
     >
-    <text style="tab-label">Assigned</text>
+    <text style="tab-label">Saved</text>
   </option>
 </select-single>"
 <view id="tab-content">
