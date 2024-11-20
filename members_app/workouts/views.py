@@ -21,7 +21,7 @@ def list_all_workouts(request):
     List all workouts.
     """
     workouts = Workout.objects.all()
-    return render(request, "workouts/workouts_list.xml", {"workouts": workouts})
+    return render(request, "workouts/workouts_list.xml", {"list": "all", "workouts": workouts})
 
 
 @api_view(["GET"])
@@ -32,7 +32,7 @@ def list_assigned_workouts(request):
     """
 
     workouts = Workout.objects.filter(workoutassignment__user=request.user)
-    return render(request, "workouts/workouts_list.xml", {"workouts": workouts})
+    return render(request, "workouts/workouts_list.xml", {"list": "assigned", "workouts": workouts})
 
 
 @api_view(["GET"])

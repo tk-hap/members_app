@@ -1,8 +1,18 @@
-<list xmlns="https://hyperview.org/hyperview" style="items">
-    {% for workout in workouts %}
-    <item style="workout-item" key="{{ workout.id }}" href="{% url 'workout-detail' workout.id %}">
-        <text style="item-headline">{{ workout.name }}</text>
-        <text style="item-supporting-text">{{ workout.difficulty }} - {{ workout.duration}}m</text>
-    </item>
-    {% endfor %}
+<list 
+  xmlns="https://hyperview.org/hyperview"
+  style="items"
+  trigger="refresh"
+{% if list == 'assigned' %}
+  href="{% url 'assigned-workouts-list' %}"
+{% elif list == 'all' %}
+  href="{% url 'all-workouts-list' %}"
+{% endif %}
+  action="replace"
+>
+  {% for workout in workouts %}
+  <item style="workout-item" key="{{ workout.id }}" href="{% url 'workout-detail' workout.id %}">
+      <text style="item-headline">{{ workout.name }}</text>
+      <text style="item-supporting-text">{{ workout.difficulty }} - {{ workout.duration}}m</text>
+  </item>
+  {% endfor %}
 </list>
