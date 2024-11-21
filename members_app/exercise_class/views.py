@@ -47,6 +47,12 @@ def exercise_class_detail(request, class_id):
 
 @api_view(["GET"])
 @permission_classes([IsAuthenticated])
+def classes_home(request):
+    return render(request, "exercise_class/home.xml")
+
+
+@api_view(["GET"])
+@permission_classes([IsAuthenticated])
 def list_upcoming_classes(request):
     days_to_load = int(request.GET.get("days", 7))
 
@@ -72,7 +78,7 @@ def list_upcoming_classes(request):
 
     return render(
         request,
-        "exercise_class/exercise_class_upcoming.xml",
+        "exercise_class/upcoming_list.xml",
         {
             "exercise_classes": exercise_classes_grouped,
         },

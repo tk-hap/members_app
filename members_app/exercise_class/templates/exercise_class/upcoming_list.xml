@@ -1,22 +1,11 @@
-{% extends "base.xml" %}
-{% load static %}
-
-{% block styles %}
-  {% include "exercise_class/styles.xml" %}
-{% endblock %}
-
-
-{% load tz %}
-{% get_current_timezone as TIME_ZONE %}
-{% localtime on %}
-
-{% block header %}
-<image style="appbar-gym-logo" source="{% static 'gym/example-logo.png' %}"/>
-<text style="appbar-headline-centered">Classes</text>
-{% endblock %}
-
-{% block content %}
-<section-list id="class-list" sticky-section-titles="true">
+<section-list 
+  xmlns="https://hyperview.org/hyperview"
+  id="class-list"
+  sticky-section-titles="true"
+  trigger="refresh"
+  action="replace"
+  href="{% url 'upcoming-classes' %}"
+>
 {% for date, classes in exercise_classes.items %}
   <section-title>
     <text style="day-indicator">{{ date }}</text>
@@ -38,8 +27,3 @@
   {% endfor %}
 {% endfor %}  
 </section-list>
-{% endblock %}
-{% block footer %}
-  {% include "navbar.xml" with selected_tab="classes" %}
-{% endblock %}
-{% endlocaltime %}
