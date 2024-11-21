@@ -11,7 +11,9 @@ def workouts_home(request):
     Home page for workouts.
     """
     workouts = Workout.objects.all()
-    return render(request, "workouts/workouts_home.xml", {"workouts": workouts})
+    return render(
+        request, "workouts/workouts_home.xml", {"list": "all", "workouts": workouts}
+    )
 
 
 @api_view(["GET"])
@@ -21,7 +23,9 @@ def list_all_workouts(request):
     List all workouts.
     """
     workouts = Workout.objects.all()
-    return render(request, "workouts/workouts_list.xml", {"list": "all", "workouts": workouts})
+    return render(
+        request, "workouts/workouts_list.xml", {"list": "all", "workouts": workouts}
+    )
 
 
 @api_view(["GET"])
@@ -30,9 +34,12 @@ def list_assigned_workouts(request):
     """
     List all workouts assigned to the current user.
     """
-
     workouts = Workout.objects.filter(workoutassignment__user=request.user)
-    return render(request, "workouts/workouts_list.xml", {"list": "assigned", "workouts": workouts})
+    return render(
+        request,
+        "workouts/workouts_list.xml",
+        {"list": "assigned", "workouts": workouts},
+    )
 
 
 @api_view(["GET"])
@@ -42,10 +49,11 @@ def workout_detail(request, workout_id):
     Display details for a specific workout.
     Includes a list of exercises in the workout.
     """
-
     workout = Workout.objects.get(pk=workout_id)
     workout_exercise = WorkoutExercise.objects.filter(workout=workout_id)
-    saved = WorkoutAssignment.objects.filter(user=request.user, workout=workout).exists()
+    saved = WorkoutAssignment.objects.filter(
+        user=request.user, workout=workout
+    ).exists()
     return render(
         request,
         "workouts/workout_detail.xml",
@@ -59,7 +67,6 @@ def exercise_detail(request, workout_exercise_id):
     """
     Display details for a specific exercise.
     """
-
     workout_exercise = WorkoutExercise.objects.get(pk=workout_exercise_id)
     return render(
         request, "workouts/exercise_detail.xml", {"workout_exercise": workout_exercise}
@@ -72,9 +79,8 @@ def save_workout(request, workout_id):
     """
     Save a workout to a user's profile.
     """
-
     workout = Workout.objects.get(pk=workout_id)
-    WorkoutAssignment.objects.create(user=request.user, workout=workout) 
+    WorkoutAssignment.objects.create(user=request.user, workout=workout)
     return render(request, "workouts/saved.xml", {"workout": workout})
 
 
@@ -84,7 +90,6 @@ def unsave_workout(request, workout_id):
     """
     Remove a workout from a user's profile.
     """
-    
     workout = Workout.objects.get(pk=workout_id)
     WorkoutAssignment.objects.filter(user=request.user, workout=workout).delete()
     return render(request, "workouts/not_saved.xml", {"workout": workout})
