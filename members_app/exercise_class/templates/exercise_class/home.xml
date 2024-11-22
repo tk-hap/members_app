@@ -1,0 +1,36 @@
+{% extends "base.xml" %}
+{% load static %}
+
+{% block styles %}
+  {% include "exercise_class/styles.xml" %}
+{% endblock %}
+
+
+{% load tz %}
+{% get_current_timezone as TIME_ZONE %}
+{% localtime on %}
+
+{% block header %}
+<image style="appbar-gym-logo" source="{% static 'gym/example-logo.png' %}"/>
+<text style="appbar-headline-centered">Classes</text>
+{% endblock %}
+
+{% block content %}
+<list id="class-list" trigger="refresh" action="replace" href="{% url 'upcoming-classes' %}">
+  <item
+    style="spinner"
+    key="load"
+    trigger="visible"
+    once="true"
+    href="{% url 'upcoming-classes' %}"
+    action="replace"
+    target="class-list"
+  >
+    <spinner/>
+  </item>
+</list>
+{% endblock %}
+{% block footer %}
+  {% include "navbar.xml" with selected_tab="classes" %}
+{% endblock %}
+{% endlocaltime %}
