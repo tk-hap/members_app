@@ -10,6 +10,14 @@ def trainer_home(request):
     featured_trainers = Trainer.objects.filter(featured=True).order_by("first_name")
     return render(request, "trainers/trainer_home.xml", {"trainers": featured_trainers})
 
+#TODO: make this DRY
+@api_view(["GET"])
+@permission_classes([IsAuthenticated])
+def trainer_list(request):
+    featured_trainers = Trainer.objects.filter(featured=True).order_by("first_name")
+    return render(request, "trainers/trainer_list.xml", {"trainers": featured_trainers})
+
+
 @api_view(["GET"])
 @permission_classes([IsAuthenticated])
 def trainer(request, trainer_id):

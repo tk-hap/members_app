@@ -5,16 +5,7 @@
 <text style="appbar-headline-centered">Trainers</text>
 {% endblock %}
 {% block content %}
-<view scroll="true">
-    <view style="profiles">
-    {% for trainer in trainers %}
-        <view style="profile-card" href="{% url 'trainer' trainer.id %}">
-            <image style="profile-picture" source="{{ trainer.picture_thumbnail.url }}"/>
-            <text style="centered-label">{{ trainer.first_name }} {{ trainer.last_name }}</text>
-        </view>
-    {% endfor %}
-    </view>
-</view>
+  {% include "trainers/trainer_list.xml" %}
 {% endblock %}
 {% block footer %}
   {% include "navbar.xml" with selected_tab="trainers" %}
