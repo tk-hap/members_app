@@ -1,11 +1,19 @@
 import datetime
+import io
 from django.utils import timezone
 from django.shortcuts import render
+from django.http import FileResponse
 from django.template.response import TemplateResponse
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.decorators import api_view, permission_classes
 
 from .models import ExerciseClassOccurrence, ExerciseClassEvent, Booking
+from .utils import generate_ics_file
+
+@api_view(["GET"])
+@permission_classes([IsAuthenticated])
+def classes_home(request):
+    return render(request, "exercise_class/home.xml")
 
 
 @api_view(["GET"])
@@ -43,12 +51,6 @@ def exercise_class_detail(request, class_id):
         "exercise_class/exercise_class_detail.xml",
         {"class_details": exercise_class_details, "status": status},
     )
-
-
-@api_view(["GET"])
-@permission_classes([IsAuthenticated])
-def classes_home(request):
-    return render(request, "exercise_class/home.xml")
 
 
 @api_view(["GET"])
@@ -122,3 +124,11 @@ def cancel_booking(request, class_id):
     Booking.objects.get(occurrence=exercise_class, participant=request.user).delete()
 
     return render(request, "exercise_class/book.xml", {"class_id": class_id})
+
+
+@api_view(["GET"])
+def save_to_calendar(request, class_id):
+    exercise_class = ExerciseClassOccurrence.objects.get(pk=class_id)
+    ics_file = generate_ics_file(exercise_class)
+
+    return FileResponse(ics_file, as_attachment=False, filename="event.ical")
