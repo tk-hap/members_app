@@ -1,0 +1,19 @@
+{% extends "base.xml" %}
+{% load static %}
+
+{% block styles %}
+  {% include "exercise_class/styles.xml" %}
+{% endblock %}
+
+{% block header %}
+{% endblock %}
+
+{% block content %}
+<text style="label-link" href="{{ calendar_url.google }}" action="deep-link">Google Calendar</text>
+<text style="label-link" href="{{ calendar_url.outlook }}" action="deep-link">Outlook</text>
+<text style="label-link" href="{{ calendar_url.ics }}" action="deep-link">ICS File</text>
+{% endblock %}
+
+{% block footer %}:w
+
+{% endblock %}
