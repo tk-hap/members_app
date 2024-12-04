@@ -14,4 +14,5 @@ urlpatterns = [
         name="exercise-class-detail",
     ),
     path("<int:class_id>/save-to-cal/", views.save_to_calendar, name="save-to-calendar"),
+    path("<int:class_id>/save-to-cal/ics", views.download_ics, name="download-ics"),
 ]
