@@ -158,4 +158,4 @@ def download_ics(request, class_id):
     exercise_class = ExerciseClassOccurrence.objects.get(pk=class_id)
     ics_file = generate_ics_file(exercise_class)
 
-    return FileResponse(request, "exercise_class/add_to_calendar.html", {})
+    return FileResponse(ics_file, content_type='text/calendar', as_attachment=True, filename=f'{exercise_class.event.class_name}.ics') 

@@ -1,4 +1,4 @@
-from django.core.files.base import ContentFile
+from django.utils import timezone
 from io import BytesIO
 from datetime import datetime, timedelta
 from ics import Calendar, Event
@@ -38,6 +38,10 @@ def generate_ics_file(occurrence):
 
     # Combine the scheduled_date and start_time to create a datetime object for the event start
     start_datetime = datetime.combine(occurrence.scheduled_date, occurrence.event.start_time)
+
+    if timezone.is_naive(start_datetime):
+        start_datetime = timezone.make_aware(start_datetime, timezone.get_current_timezone())
+
     e.begin = start_datetime
 
     # Set the duration of the event
@@ -71,7 +75,6 @@ def google_calendar_url(occurrence):
         "details": occurrence.event.description,
         "location": occurrence.event.location,
     }
-    print(f'Google {details["dates"]}')
 
     return f"{base_url}?{stringify(details)}"
 
