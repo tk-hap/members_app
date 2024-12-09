@@ -1,11 +1,21 @@
 import datetime
+import io
 from django.utils import timezone
 from django.shortcuts import render
+from django.http import FileResponse
+from django.urls import reverse
+from django.contrib.sites.shortcuts import get_current_site
 from django.template.response import TemplateResponse
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.decorators import api_view, permission_classes
 
 from .models import ExerciseClassOccurrence, ExerciseClassEvent, Booking
+from .utils import generate_ics_file, google_calendar_url, outlook_url
+
+@api_view(["GET"])
+@permission_classes([IsAuthenticated])
+def classes_home(request):
+    return render(request, "exercise_class/home.xml")
 
 
 @api_view(["GET"])
@@ -43,12 +53,6 @@ def exercise_class_detail(request, class_id):
         "exercise_class/exercise_class_detail.xml",
         {"class_details": exercise_class_details, "status": status},
     )
-
-
-@api_view(["GET"])
-@permission_classes([IsAuthenticated])
-def classes_home(request):
-    return render(request, "exercise_class/home.xml")
 
 
 @api_view(["GET"])
@@ -122,3 +126,36 @@ def cancel_booking(request, class_id):
     Booking.objects.get(occurrence=exercise_class, participant=request.user).delete()
 
     return render(request, "exercise_class/book.xml", {"class_id": class_id})
+
+
+@api_view(["GET"])
+@permission_classes([IsAuthenticated])
+def save_to_calendar(request, class_id):
+    """
+    Save a class occurrence to a user's calendar.
+    Available options are Google Calendar, Outlook and ICS file.
+    """
+
+    exercise_class = ExerciseClassOccurrence.objects.get(pk=class_id)
+
+    google = google_calendar_url(exercise_class)
+    outlook = outlook_url(exercise_class)
+
+    outlook_mobile = "ms-outlook://events/new?title=MY%20MEETING&startdt=2019-01-29T13:00:00&enddt=2019-01-29T14:00:00&location=LOCATION&attendees=some.person@email.com"
+
+    current_site = get_current_site(request)
+    ics_url= f"http://{current_site.domain}{reverse('download-ics', args=[class_id])}"
+
+    return render(request, "exercise_class/add_to_calendar.xml", {"calendar_url": {"google": google, "ics": ics_url, "outlook": outlook}})
+
+
+@api_view(["GET"])
+def download_ics(request, class_id):
+    """
+    Download an ICS file for a class occurrence.
+    """
+
+    exercise_class = ExerciseClassOccurrence.objects.get(pk=class_id)
+    ics_file = generate_ics_file(exercise_class)
+
+    return FileResponse(ics_file, content_type='text/calendar', as_attachment=True, filename=f'{exercise_class.event.class_name}.ics') 

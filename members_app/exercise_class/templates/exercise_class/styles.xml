@@ -30,3 +30,10 @@
   flexGrow="1"
   paddingHorizontal="10"
 />
+<style
+  id="calendar-label"
+  fontSize="22"
+  fontWeight="400"
+  lineHeight="28"
+  paddingVertical="16"
+/>

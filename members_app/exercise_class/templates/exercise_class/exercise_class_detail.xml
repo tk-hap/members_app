@@ -9,6 +9,7 @@
 {% block header %}
 <image style="appbar-icon-leading" source="{% static 'icons/arrow_back.png' %}" action="back" href="#"/>
 <text style="appbar-headline">{{ class_details.class_name }}</text>
+<image style="appbar-icon-trailing" source="{% static 'icons/calendar_add.png' %}" href="{% url 'save-to-calendar' class_details.id %}" verb="get" action="new"/>
 {% endblock %}
 
 {% block content %}

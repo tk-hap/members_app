@@ -1,0 +1,27 @@
+{% extends "base.xml" %}
+{% load static %}
+
+{% block styles %}
+  {% include "exercise_class/styles.xml" %}
+{% endblock %}
+
+{% block header %}
+<image style="appbar-icon-leading" source="{% static 'icons/close.png' %}" action="close" href="#"/>
+{% endblock %}
+
+{% block content %}
+<view style="container-centered">
+  <text style="calendar-label">Add to Calendar</text>
+  <view>
+    <view style="button-filled" href="{{ calendar_url.google }}" action="deep-link">
+      <text style="button-filled-label">Google Calendar</text>
+    </view>
+    <view style="button-filled" href="{{ calendar_url.outlook}}" action="deep-link">
+      <text style="button-filled-label">Outlook</text>
+    </view>
+    <view style="button-filled" href="{{ calendar_url.ics }}" action="deep-link">
+      <text style="button-filled-label">ICS File</text>
+    </view>
+  </view>
+</view>
+{% endblock %}
