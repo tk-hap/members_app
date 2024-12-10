@@ -12,7 +12,7 @@ click-plugins==1.1.1
 click-repl==0.3.0
 defusedxml==0.7.1
 dj-rest-auth==7.0.0
-Django==5.1.4
+Django==5.0.9 # Higher version breaks django-notifications https://github.com/django-notifications/django-notifications/issues/389
 django-appconf==1.0.6
 django-hyperview==0.0.2
 django-imagekit==5.0.0
