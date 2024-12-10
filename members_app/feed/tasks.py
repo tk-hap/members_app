@@ -59,7 +59,7 @@ def remind_upcoming_classes():
 
     for exercise_class in upcoming_classes:
         message = f"Reminder: Your class {exercise_class.event.class_name} is starting soon!"
-        for participant in exercise_class.participants.all():
+        for participant in exercise_class.get_participants():
             if participant.push_token:
                 send_push_message_task.delay(
                     token=participant.push_token,
