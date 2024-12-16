@@ -3,6 +3,9 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework.authentication import TokenAuthentication
 from rest_framework.exceptions import AuthenticationFailed
 from rest_framework.decorators import api_view, authentication_classes
+from django.utils import timezone
+from workouts.models import Workout
+from exercise_class.models import Booking, ExerciseClassOccurrence, ExerciseClassEvent
 
 
 def index(request):
@@ -28,6 +31,15 @@ def home(request):
         return render(request, "authentication/login.xml", {})
 
     if user:
-        return render(request, "home.xml", {})
+        # Get user's upcoming classes
+        upcoming_classes = ExerciseClassOccurrence.objects.filter(
+            scheduled_date__gte=timezone.now().date(),
+            booking__participant=user,
+        )
+
+        # Get featured workouts
+        featured_workouts = Workout.objects.filter(featured=True)
+
+        return render(request, "home.xml", { "featured_workouts": featured_workouts, "class_booking": upcoming_classes })
     else:
         return render(request, "authentication/login.xml", {})

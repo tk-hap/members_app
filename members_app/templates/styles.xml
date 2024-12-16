@@ -362,7 +362,20 @@
   padding="16"
   elevation="5"
   />
-
+<style
+  id="featured-class-list"
+  minHeight="150"
+/>
+<style
+    id="workout-details"
+    flexDirection="row"
+    justifyContent="space-between"
+/>
+<style
+    id="workout-details-item"
+    flexDirection="row"
+    padding="8"
+/>
 <style
   id="title-medium"
   fontSize="16"
