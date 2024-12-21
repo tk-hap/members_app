@@ -82,7 +82,7 @@
   alignItems="center"
 />
 
-<style id="body" backgroundColor="white" flex="1" paddingTop="48"/>
+<style id="body" backgroundColor="white" flex="1" paddingTop="48" paddingHorizontal="8"/>
 <style id="main" flex="1" height="100%" width="100%"/>
 <style id="label" fontSize="18" />
 <style id="label-link" color="blue" fontSize="18"/>
@@ -363,7 +363,11 @@
   elevation="5"
   />
 <style
-  id="featured-class-list"
+  id="featured-classes-list"
+  minHeight="160"
+/>
+<style
+  id="featured-classes"
   minHeight="150"
 />
 <style
@@ -392,3 +396,4 @@
 
 <style id="centered-label" fontSize="18" textAlign="center"/>
 <style id="label-bold" fontSize="20" fontWeight="bold"/>
+<style id="home-label" fontSize="20" fontWeight="bold" paddingVertical="8"/>

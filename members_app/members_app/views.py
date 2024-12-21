@@ -40,6 +40,6 @@ def home(request):
         # Get featured workouts
         featured_workouts = Workout.objects.filter(featured=True)
 
-        return render(request, "home.xml", { "featured_workouts": featured_workouts, "class_booking": upcoming_classes })
+        return render(request, "home.xml", { "featured_workouts": featured_workouts, "class_bookings": upcoming_classes })
     else:
         return render(request, "authentication/login.xml", {})

@@ -6,6 +6,7 @@
     action="navigate"
     target="home-tab"
     >
+    <behavior action="dispatch-event" event-name="reload-home"/>
     <image
       source="{% static 'icons/home.png' %}"
       style="bottom-tab-icon {% if selected_tab == 'home' %}bottom-tab-selected{% endif %}"
