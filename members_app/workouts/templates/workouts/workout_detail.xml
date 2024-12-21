@@ -24,7 +24,7 @@
         <text style="item-supporting-text">{{ workout.duration }}m</text>
       </view>
       <view style="workout-details-item">
-        <image style="icon-small" source="{% static 'icons/fitness_center.png' %}"/>
+        <image style="icon-small" source="{% static 'icons/' %}{{ workout.difficulty }}-bar.png"/>
         <text style="item-supporting-text">{{ workout.difficulty }}</text>
       </view>
     </view>
