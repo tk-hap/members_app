@@ -5,10 +5,44 @@
 <text style="appbar-headline-centered">Home</text> 
 {% endblock %}
 {% block content %}
-<text style="label-link" href="{% url 'upcoming-classes' %}">Classes</text>
-<text style="label-link" href="{% url 'feed-home' %}">Feed</text>
-<text style="label-link" href="{% url 'trainer-home' %}">Trainers</text>
-<text style="label-link" href="{% url 'workouts-home' %}">Workouts</text>
+<behavior trigger="on-event" event-name="reload-home" action="reload"/>
+<text style="home-label">Featured Workouts</text>
+<view style="featured-class-list">
+  <list key="featured-workouts" scroll-orientation="horizontal">
+    {% for workout in featured_workouts %}
+      <item key="{{ workout.id }}" style="featured-classes-list" href="{% url 'workout-detail' workout.id %}">
+        <view style="content-card-elevated featured-classes" >
+          <text style="title-medium">{{ workout.name }}</text>
+          <view style="workout-details">
+            <view style="workout-details-item">
+              <image style="icon-small" source="{% static 'icons/' %}{{ workout.difficulty }}-bar.png"/>
+              <text style="item-supporting-text">{{ workout.difficulty}}</text>
+            </view>
+            <view style="workout-details-item">
+              <image style="icon-small" source="{% static 'icons/schedule.png' %}"/>
+              <text style="item-supporting-text">{{ workout.duration }}</text>
+            </view>
+          </view>
+        </view>
+      </item>
+    {% endfor %}
+  </list>
+</view>
+<text style="home-label">My Bookings</text>
+<list key="my-bookings">
+  {% for class in class_bookings %}
+    <item key="{{ class.id }}" href="{% url 'exercise-class-detail' class.id %}">
+      <view style="content-card-elevated">
+        <image style="item-avatar" source="{{ class.event.trainer.picture_thumbnail.url }}"/>
+        <view style="class-item-text">
+          <text style="item-headline">{{ class.event.class_name }}</text>
+          <text style="item-supporting-text">Trainer - {{ class.event.trainer }}</text>
+        </view>
+        <text style="item-supporting-text-trailing">{{ class.scheduled_date|date:"M d" }}, {{ class.event.start_time }}</text>
+      </view>
+    </item>
+  {% endfor %}
+</list>
 {% endblock %}
 {% block footer %}
   {% include "navbar.xml" with selected_tab="home" %}

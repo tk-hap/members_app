@@ -30,6 +30,7 @@ class Workout(models.Model):
     duration = models.PositiveIntegerField()
     created_by = models.ForeignKey(User, on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
+    featured = models.BooleanField(default=False)
 
     def __str__(self):
         return self.name
