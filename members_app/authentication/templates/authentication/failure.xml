@@ -1,38 +1,32 @@
-{% extends "base.xml" %}
 {% load static %}
 {% load hv_tags %}
-{% block styles %}
-  {% include "authentication/styles.xml" %}
-{% endblock %}
-{% block header %}
-{% endblock %}
-
-{% block content %}
-<view id="login">
+<view xmlns="https://hyperview.org/hyperview" id="login">
   <view style="login-view">
     <image style="login-gym-logo" source="{% static 'gym/example-logo.png' %}"/>
     <text style="headline">Welcome</text>
     <text>Log in to Gym Name</text>
   </view>
-  <form id="login-form" scroll="true">
+  <form  id="login-form" scroll="true">
     <view style="form-group">
       <text-field
-        style="input"
+        style="input-error"
         name="username"
         placeholder="Username"
         />
       <text-field
-        style="input"
+        style="input-error"
         name="password"
         placeholder="Password"
         secure-text="true"
         />
+      <text style="supporting-text-error">Username or password is incorrect!</text>
       <view 
         style="button-filled"
         href="{% url 'login' %}"
         verb="post"
         action="replace"
         target="login"
+        show-during-load="loading-spinner"
       >
         <text style="button-filled-label">Continue</text>
       </view>
@@ -40,4 +34,3 @@
   </form>
   <spinner hide="true" id="loading-spinner"></spinner>
 </view>
-{% endblock %}

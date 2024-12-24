@@ -24,22 +24,32 @@ def check_auth(request):
 def home(request):
     user = None
     try:
-       auth_result = TokenAuthentication().authenticate(request)
-       if auth_result is not None:
-           user = auth_result[0]
-    except AuthenticationFailed:
+        print("Attempting to authenticate user...")
+        auth_result = TokenAuthentication().authenticate(request)
+        if auth_result is not None:
+            user = auth_result[0]
+            print(f"User authenticated: {user.username}")
+        else:
+            print("Authentication result is None.")
+    except AuthenticationFailed as e:
+        print(f"Authentication failed: {str(e)}")
         return render(request, "authentication/login.xml", {})
 
     if user:
+        print("Fetching user's upcoming classes...")
         # Get user's upcoming classes
         upcoming_classes = ExerciseClassOccurrence.objects.filter(
             scheduled_date__gte=timezone.now().date(),
             booking__participant=user,
         )
+        print(f"Upcoming classes: {upcoming_classes}")
 
+        print("Fetching featured workouts...")
         # Get featured workouts
         featured_workouts = Workout.objects.filter(featured=True)
+        print(f"Featured workouts: {featured_workouts}")
 
         return render(request, "home.xml", { "featured_workouts": featured_workouts, "class_bookings": upcoming_classes })
     else:
+        print("User is not authenticated.")
         return render(request, "authentication/login.xml", {})

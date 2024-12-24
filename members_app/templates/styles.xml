@@ -91,13 +91,43 @@
 <style id="warning" backgroundColor="orange" />
 <style
   id="input"
-  borderBottomColor="#E1E1E1"
-  borderBottomWidth="1"
-  borderColor="#4E4D4D"
-  flex="1"
+  borderColor="#E1E1E1"
+  borderWidth="1"
   fontSize="16"
-  paddingBottom="8"
-  paddingTop="8"
+  lineHeight="24"
+  fontWeight="400"
+  paddingHorizontal="16"
+  marginBottom="16"
+  borderRadius="4"
+  height="56"
+>
+  <modifier focused="true">
+    <style borderColor="#6750A4" borderWidth="2"/> 
+  </modifier>
+</style>
+<style
+  id="input-error"
+  borderColor="#B3261E"
+  borderWidth="1"
+  fontSize="16"
+  lineHeight="24"
+  fontWeight="400"
+  paddingHorizontal="16"
+  marginBottom="16"
+  borderRadius="4"
+  height="56"
+/>
+<style
+  id="input-success"
+  borderColor="green"
+  borderWidth="1"
+  fontSize="16"
+  lineHeight="24"
+  fontWeight="400"
+  paddingHorizontal="16"
+  marginBottom="16"
+  borderRadius="4"
+  height="56"
 />
 <style
   id="form-group"

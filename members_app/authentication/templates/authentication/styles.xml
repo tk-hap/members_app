@@ -1,0 +1,44 @@
+<style
+  id="headline"
+  fontSize="22"
+  fontWeight="400"
+  lineHeight="28"
+/>
+
+<style 
+  id="login-view"
+  alignItems="center"
+/>
+
+<style
+  id="login-gym-logo"
+  height="96"
+  width="96"
+  marginBottom="10"
+/>
+
+<style
+  id="supporting-text-error"
+  color="#B3261E"
+  fontSize="12"
+  lineHeight="16"
+  fontWeight="400"
+  marginBottom="10"
+/>
+
+<style
+  id="supporting-text-success"
+  color="green"
+  fontSize="12"
+  lineHeight="16"
+  fontWeight="400"
+  marginBottom="10"
+/>
+
+<style
+  id="redirect-view"
+  width="100%"
+  height="100%"
+  backgroundColor="white"
+  justifyContent="center"
+/>
