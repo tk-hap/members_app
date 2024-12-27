@@ -34,29 +34,40 @@ CSRF_TRUSTED_ORIGINS = [
 
 # Application definition
 
-INSTALLED_APPS = [
+SHARED_APPS = [
+    "django_tenants",
+    "tenant_manager",
     "unfold",
-    "django.contrib.admin",
-    "django.contrib.auth",
     "django.contrib.contenttypes",
-    "django.contrib.sessions",
-    "django.contrib.messages",
-    "django.contrib.staticfiles",
-    "authentication.apps.AuthenticationConfig",
-    "users.apps.UsersConfig",
-    "exercise_class.apps.ExerciseClassConfig",
-    "workouts.apps.WorkoutsConfig",
     "django_hv",
-    "rest_framework",
-    "rest_framework.authtoken",
-    "trainers.apps.TrainersConfig",
-    "notifications",
-    "feed.apps.FeedConfig",  # This needs to be imported after the notifications app
     "imagekit",
     "recurrence",
 ]
 
+TENANT_APPS = [
+    "rest_framework",
+    "rest_framework.authtoken",
+    "django.contrib.sessions",
+    "django.contrib.messages",
+    "django.contrib.staticfiles",
+    "django.contrib.admin",
+    "django.contrib.auth",
+    "authentication.apps.AuthenticationConfig",
+    "users.apps.UsersConfig",
+    "workouts.apps.WorkoutsConfig",
+    "trainers.apps.TrainersConfig",
+    "exercise_class.apps.ExerciseClassConfig",
+    "notifications",
+    "feed.apps.FeedConfig",  # This needs to be imported after the notifications app
+]    
+
+ # Avoid duplication of shared apps
+INSTALLED_APPS = SHARED_APPS + [
+    app for app in TENANT_APPS if app not in SHARED_APPS
+]
+
 MIDDLEWARE = [
+    "django_tenants.middleware.main.TenantMainMiddleware",
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
@@ -93,7 +104,7 @@ WSGI_APPLICATION = "members_app.wsgi.application"
 
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.postgresql",
+        "ENGINE": "django_tenants.postgresql_backend",
         "NAME": os.environ.get("POSTGRES_NAME"),
         "USER": os.environ.get("POSTGRES_USER"),
         "PASSWORD": os.environ.get("POSTGRES_PASSWORD"),
@@ -102,6 +113,13 @@ DATABASES = {
     }
 }
 
+DATABASE_ROUTERS = (
+    "django_tenants.routers.TenantSyncRouter",
+)
+
+TENANT_MODEL = "tenant_manager.Tenant"
+TENANT_DOMAIN_MODEL = "tenant_manager.Domain"
+SHOW_PUBLIC_IF_NO_TENANT_FOUND = True
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
