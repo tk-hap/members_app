@@ -1,6 +1,9 @@
 {% load static %}
 <view style="login-view">
-  <image style="login-gym-logo" source="{% static 'gym/example-logo.png' %}"/>
+  {% if branding and branding.logo %} <!-- TODO: Default Image -->
+  <image style="login-gym-logo" source="{{ branding.logo.url }}"/>
+  {% endif %}
+
   <text style="headline">Welcome</text>
   <text>Log in to {% if request.tenant %}{{ request.tenant.name }}{% endif %}</text>
 </view>

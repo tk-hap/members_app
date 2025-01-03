@@ -102,7 +102,7 @@
   height="56"
 >
   <modifier focused="true">
-    <style borderColor="#6750A4" borderWidth="2"/> 
+    <style borderColor="{{ branding.primary_color }}" borderWidth="2"/> 
   </modifier>
 </style>
 <style
@@ -335,7 +335,7 @@
 <style 
   id="button-filled" 
   flexDirection="row"
-  backgroundColor="#6750A4"
+  backgroundColor="{{ branding.primary_color }}"
   borderRadius="20"
   height="40"
   marginHorizontal="10"

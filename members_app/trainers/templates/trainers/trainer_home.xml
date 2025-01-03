@@ -1,7 +1,10 @@
 {% extends "base.xml" %}
 {% load static %}
 {% block header %}
-<image style="appbar-gym-logo" source="{% static 'gym/example-logo.png' %}"/>
+{% if branding and branding.logo %} <!-- TODO: Default Image -->
+<image style="appbar-gym-logo" source="{{ branding.logo.url }}"/>
+{% endif %}
+
 <text style="appbar-headline-centered">Trainers</text>
 {% endblock %}
 {% block content %}

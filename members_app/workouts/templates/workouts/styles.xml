@@ -45,7 +45,7 @@
     fontSize="14"
     lineHeight="20"
     fontWeight="500"
-    color="#6750A4"
+    color="{{ branding.primary_color }}"
 />
 <style
     id="tabs-secondary-container"
@@ -62,7 +62,7 @@
     <modifier selected="true">
         <style
             id="tab"
-            borderBottomColor="#6750A4"
+            borderBottomColor="{{ branding.primary_color }}"
             borderBottomWidth="2"
         />
     </modifier>
