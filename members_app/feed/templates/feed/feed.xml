@@ -23,5 +23,5 @@
 </list>
 {% endblock %}
 {% block footer %}\
-  {% include "navbar.xml" with selected_tab="feed" %}
+  {% include "navbar.xml" with selected_tab="feed-tab" %}
 {% endblock %}

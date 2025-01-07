@@ -49,5 +49,5 @@
 </view> 
 {% endblock %}
 {% block footer %}
-  {% include "navbar.xml" with selected_tab="workouts" %}
+  {% include "navbar.xml" with selected_tab="workouts-tab" %}
 {% endblock %}

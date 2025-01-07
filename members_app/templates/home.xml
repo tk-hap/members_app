@@ -48,5 +48,5 @@
 </list>
 {% endblock %}
 {% block footer %}
-  {% include "navbar.xml" with selected_tab="home" %}
+  {% include "navbar.xml" with selected_tab="home-tab" %}
 {% endblock %}

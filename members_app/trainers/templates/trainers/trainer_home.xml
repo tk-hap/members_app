@@ -11,5 +11,5 @@
   {% include "trainers/trainer_list.xml" %}
 {% endblock %}
 {% block footer %}
-  {% include "navbar.xml" with selected_tab="trainers" %}
+  {% include "navbar.xml" with selected_tab="trainers-tab" %}
 {% endblock %}

@@ -1,0 +1,16 @@
+{% load static %}
+<view 
+style="bottom-tab"
+href-style="bottom-tab"
+action="navigate"
+target="{{ target }}"
+>
+<behavior action="dispatch-event" event-name="reload-home"/>
+<view style="navbar-active-indicator {% if not selected_tab == target %}transparent{% endif %}">
+    <image
+    source="{% static icon %}"
+    style="bottom-tab-icon"
+    />
+</view>
+<text style="navbar-label {% if selected_tab == target %}navbar-label-selected{% endif %}">{{ label }}</text>
+</view>
