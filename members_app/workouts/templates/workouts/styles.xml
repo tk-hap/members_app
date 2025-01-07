@@ -46,6 +46,7 @@
     lineHeight="20"
     fontWeight="500"
     color="{{ branding.primary_color }}"
+    fontFamily="Lexend"
 />
 <style
     id="tabs-secondary-container"
@@ -74,6 +75,7 @@
     lineHeight="20"
     fontWeight="500"
     color="#49454F"
+    fontFamily="Lexend"
 >
     <modifier selected="true">
         <style
