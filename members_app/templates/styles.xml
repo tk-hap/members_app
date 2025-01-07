@@ -20,15 +20,28 @@
   lineHeight="16"
   fontWeight="500"
   color="#49454F"
+  fontFamily="Lexend"
 />
-<style id="navbar-label-selected" color="blue"/>
-<style id="bottom-tab-selected"/>
+<style 
+  id="navbar-label-selected"
+  color="#1D1B20"
+  fontFamily="Lexend-Bold"
+/>
 <style
-  id="bottom-tab-icon"
-  flex="0"
+  id="navbar-active-indicator"
+  backgroundColor="{{ branding.secondary_color }}"
+  height="32"
+  width="64"
+  borderRadius="16"
   justifyContent="center"
   alignItems="center"
-  padding="10"
+/>
+<style
+  id="bottom-tab-icon"
+  height="24"
+  width="24"
+  justifyContent="center"
+  alignItems="center"
 />
 
 <style
@@ -45,6 +58,7 @@
   fontWeight="400"
   lineHeight="28"
   flex="1"
+  fontFamily="Lexend"
 />
 <style
   id="appbar-headline-centered"
@@ -53,6 +67,7 @@
   lineHeight="28"
   flex="1"
   textAlign="center"
+  fontFamily="Lexend"
 />
 <style
   id="appbar-icon-leading"
@@ -84,7 +99,7 @@
 
 <style id="body" backgroundColor="white" flex="1" paddingTop="48" paddingHorizontal="8"/>
 <style id="main" flex="1" height="100%" width="100%"/>
-<style id="label" fontSize="18" />
+<style id="label" fontSize="18" fontFamily="Lexend" />
 <style id="label-link" color="blue" fontSize="18"/>
 <style id="info" backgroundColor="#ADD8E6" />
 <style id="success" backgroundColor="green" />
@@ -102,7 +117,7 @@
   height="56"
 >
   <modifier focused="true">
-    <style borderColor="#6750A4" borderWidth="2"/> 
+    <style borderColor="{{ branding.primary_color }}" borderWidth="2"/> 
   </modifier>
 </style>
 <style
@@ -155,6 +170,7 @@
   lineHeight="24"
   fontSize="16"
   fontWeight="400"
+  fontFamily="Lexend"
  /> 
  <style
   id="item-supporting-text"
@@ -162,6 +178,7 @@
   lineHeight="20"
   fontSize="14"
   fontWeight="400"
+  fontFamily="Lexend"
   />
  <style
   id="item-supporting-text-trailing"
@@ -170,6 +187,7 @@
   fontSize="12"
   fontWeight="500"
   paddingRight="16"
+  fontFamily="Lexend"
   />
   <style
     id="item-avatar"
@@ -214,12 +232,14 @@
   color="#4E4D4D"
   fontSize="14"
   fontWeight="bold"
+  fontFamily="Lexend"
 />
 <style
   id="notification-item-description"
   color="black"
   fontSize="14"
   fontWeight="normal"
+  fontFamily="Lexend"
 />
 <style id="notification-item-right" flexDirection="row" />
 <style id="notification-item-time" textAlign="right"/>
@@ -236,6 +256,7 @@
   backgroundColor="#ECF0F1"
   paddingHorizontal="16"
   paddingVertical="12"
+  fontFamily="Lexend"
   />
 <style
   id="spinner"
@@ -249,10 +270,12 @@
   fontSize="24"
   fontWeight="bold"
   color="#FFFFFF"
+  fontFamily="Lexend"
   />
 <style
   id="basic-font"
   fontSize="16"
+  fontFamily="Lexend"
   />
 <style
   id="icon-medium"
@@ -335,7 +358,7 @@
 <style 
   id="button-filled" 
   flexDirection="row"
-  backgroundColor="#6750A4"
+  backgroundColor="{{ branding.primary_color }}"
   borderRadius="20"
   height="40"
   marginHorizontal="10"
@@ -350,6 +373,7 @@
   fontSize="14"
   fontWeight="500"
   color="#FFFFFF"
+  fontFamily="Lexend"
   />
 <style 
   id="button-icon"
@@ -424,6 +448,11 @@
   lineHeight="20"
   />
 
-<style id="centered-label" fontSize="18" textAlign="center"/>
-<style id="label-bold" fontSize="20" fontWeight="bold"/>
-<style id="home-label" fontSize="20" fontWeight="bold" paddingVertical="8"/>
+<style
+  id="transparent"
+  backgroundColor="#00000000"
+  />
+
+<style id="centered-label" fontSize="18" textAlign="center" fontFamily="Lexend"/>
+<style id="label-bold" fontSize="20" fontWeight="bold" fontFamily="Lexend"/>
+<style id="home-label" fontSize="20" fontFamily="Lexend-Bold" paddingVertical="8"/>

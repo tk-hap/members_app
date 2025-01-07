@@ -1,11 +1,6 @@
-{% load static %}
 {% load hv_tags %}
 <view xmlns="https://hyperview.org/hyperview" id="login">
-  <view style="login-view">
-    <image style="login-gym-logo" source="{% static 'gym/example-logo.png' %}"/>
-    <text style="headline">Welcome</text>
-    <text>Log in to Gym Name</text>
-  </view>
+  {% include "authentication/includes/branded_header.xml" %}
   <form  id="login-form" scroll="true">
     <view style="form-group">
       <text-field

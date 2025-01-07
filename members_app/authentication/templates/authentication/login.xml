@@ -8,12 +8,8 @@
 {% endblock %}
 
 {% block content %}
-<view id="login">
-  <view style="login-view">
-    <image style="login-gym-logo" source="{% static 'gym/example-logo.png' %}"/>
-    <text style="headline">Welcome</text>
-    <text>Log in to Gym Name</text>
-  </view>
+<view xmlns="https://hyperview.org/hyperview" id="login">
+  {% include "authentication/includes/branded_header.xml" %}
   <form id="login-form" scroll="true">
     <view style="form-group">
       <text-field

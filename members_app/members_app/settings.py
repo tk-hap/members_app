@@ -11,6 +11,9 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 import os
 from pathlib import Path
+from django.utils.translation import gettext_lazy as _
+from django.urls import reverse_lazy
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -29,34 +32,63 @@ ALLOWED_HOSTS = ["*"]
 
 CSRF_TRUSTED_ORIGINS = [
     "http://localhost",
+    "http://*.gymlink.local",
     "https://django-members-app.communitygrounds.co.nz",
 ]
 
 # Application definition
 
-INSTALLED_APPS = [
+SHARED_APPS = [
+    "django_tenants", # mandatory
+    "tenant_manager", # you must list the app where your tenant model resides in
+
     "unfold",
+    #"unfold.contrib.filters",  # optional, if special filters are needed
+    # "unfold.contrib.forms",  # optional, if special form elements are needed
+    # "unfold.contrib.inlines",  # optional, if special inlines are needed
+    # "unfold.contrib.import_export",  # optional, if django-import-export package is used
+    # "unfold.contrib.guardian",  # optional, if django-guardian package is used
+    # "unfold.contrib.simple_history",  # optional, if django-simple-history package is used
+
     "django.contrib.admin",
-    "django.contrib.auth",
-    "django.contrib.contenttypes",
     "django.contrib.sessions",
+    "django.contrib.contenttypes",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    "authentication.apps.AuthenticationConfig",
-    "users.apps.UsersConfig",
-    "exercise_class.apps.ExerciseClassConfig",
-    "workouts.apps.WorkoutsConfig",
+    "django.contrib.auth",
+    "django.contrib.humanize",
+
     "django_hv",
-    "rest_framework",
-    "rest_framework.authtoken",
-    "trainers.apps.TrainersConfig",
-    "notifications",
-    "feed.apps.FeedConfig",  # This needs to be imported after the notifications app
     "imagekit",
     "recurrence",
 ]
 
+TENANT_COLOR_ADMIN_APPS = False
+
+TENANT_APPS = [
+    "django.contrib.contenttypes",
+    "django.contrib.staticfiles",
+
+    "rest_framework",
+    "rest_framework.authtoken",
+    "notifications",
+
+    "authentication.apps.AuthenticationConfig",
+    "users.apps.UsersConfig",
+    "workouts.apps.WorkoutsConfig",
+    "trainers.apps.TrainersConfig",
+    "exercise_class.apps.ExerciseClassConfig",
+    "feed.apps.FeedConfig",  # This needs to be imported after the notifications app
+    "branding.apps.BrandingConfig",
+]    
+
+ # Avoid duplication of shared apps
+INSTALLED_APPS = SHARED_APPS + [
+    app for app in TENANT_APPS if app not in SHARED_APPS
+]
+
 MIDDLEWARE = [
+    "django_tenants.middleware.main.TenantMainMiddleware",
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
@@ -68,6 +100,7 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = "members_app.urls"
+PUBLIC_SCHEMA_URLCONF = "members_app.urls_public"
 
 TEMPLATES = [
     {
@@ -80,6 +113,7 @@ TEMPLATES = [
                 "django.template.context_processors.request",
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
+                "branding.context_processors.branding", # Handles branding model customizations
             ],
         },
     },
@@ -93,7 +127,7 @@ WSGI_APPLICATION = "members_app.wsgi.application"
 
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.postgresql",
+        "ENGINE": "django_tenants.postgresql_backend",
         "NAME": os.environ.get("POSTGRES_NAME"),
         "USER": os.environ.get("POSTGRES_USER"),
         "PASSWORD": os.environ.get("POSTGRES_PASSWORD"),
@@ -102,6 +136,14 @@ DATABASES = {
     }
 }
 
+DATABASE_ROUTERS = (
+    "django_tenants.routers.TenantSyncRouter",
+)
+
+TENANT_MODEL = "tenant_manager.Tenant"
+TENANT_DOMAIN_MODEL = "tenant_manager.Domain"
+SHOW_PUBLIC_IF_NO_TENANT_FOUND = True
+PUBLIC_SCHEMA_NAME = "public"
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
@@ -190,4 +232,88 @@ NOTIFICATIONS_NOTIFICATION_MODEL = "feed.Notification"
 CELERY_BROKER_URL = "redis://redis:6379"
 CELERY_RESULT_BACKEND = "redis://redis:6379"
 
+UNFOLD_TENANT = {
+    "SIDEBAR": {
+    "show_search": False,  # Search in applications and models names
+    "show_all_applications": False,  # Dropdown with all applications and models
+    "navigation": [
+        {
+            "title": _("Navigation"),
+            "separator": True,  # Top border
+            "collapsible": True,  # Collapsible group of links
+            "items": [
+                {
+                    "title": _("Dashboard"),
+                    "icon": "dashboard",  # Supported icon set: https://fonts.google.com/icons
+                    "link": reverse_lazy("admin:index"),
+                    "permission": lambda request: request.user.is_superuser,
+                },
+                {
+                    "title": _("Tenants"),
+                    "icon": "people",
+                    "link": reverse_lazy("admin:tenant_manager_tenant_changelist"),
+                },
+                {
+                    "title": _("Domains"),
+                    "icon": "domain",
+                    "link": reverse_lazy("admin:tenant_manager_domain_changelist"),
+                },
 
+            ],
+        },
+        ],
+    },
+}
+
+UNFOLD = {
+    "SIDEBAR": {
+    "show_search": False,  # Search in applications and models names
+    "show_all_applications": False,  # Dropdown with all applications and models
+    "navigation": [
+        {
+            "title": _("Navigation"),
+            "separator": True,  # Top border
+            "collapsible": True,  # Collapsible group of links
+            "items": [
+                {
+                    "title": _("Dashboard"),
+                    "icon": "dashboard",  # Supported icon set: https://fonts.google.com/icons
+                    "link": reverse_lazy("admin:index"),
+                    "badge": "sample_app.badge_callback",
+                    "permission": lambda request: request.user.is_superuser,
+                },
+                {
+                    "title": _("Users"),
+                    "icon": "people",
+                    "link": reverse_lazy("admin:users_user_changelist"),
+                },
+                {
+                    "title": _("Workouts"),
+                    "icon": "fitness_center",
+                    "link": reverse_lazy("admin:workouts_workout_changelist"),
+                },
+                {
+                    "title": _("Trainers"),
+                    "icon": "directions_run",
+                    "link": reverse_lazy("admin:trainers_trainer_changelist"),
+                },
+                {
+                    "title": _("Classes"),
+                    "icon": "school",
+                    "link": reverse_lazy("admin:exercise_class_exerciseclassevent_changelist"),
+                },
+                {
+                    "title": _("Feed"),
+                    "icon": "rss_feed",
+                    "link": reverse_lazy("admin:feed_notification_changelist"),
+                },
+                {
+                    "title": _("Branding"),
+                    "icon": "palette",
+                    "link": reverse_lazy("admin:branding_branding_changelist"),
+                }
+            ],
+        },
+        ],
+    },
+}
