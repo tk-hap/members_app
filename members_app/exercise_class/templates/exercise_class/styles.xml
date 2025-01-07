@@ -38,3 +38,27 @@
   paddingVertical="16"
   fontFamily="Lexend"
 />
+<style
+  id="class-icon-container"
+  alignItems="center"
+  justifyContent="center"
+  width="48"
+  height="48"
+  backgroundColor="{{ branding.secondary_color }}"
+  borderRadius="5"
+  marginHorizontal="10"
+/>
+<style
+  id="class-details-icon"
+  width="24"
+  height="24"
+  alignItems="center"
+  justifyContent="center"
+/>
+<style
+  id="class-details"
+  marginVertical="12"
+  flexDirection="row"
+  flex="1"
+  minHeight="48"
+/>

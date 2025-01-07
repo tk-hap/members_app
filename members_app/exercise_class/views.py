@@ -28,6 +28,15 @@ def exercise_class_detail(request, class_id):
         occurrence=exercise_class, participant=request.user
     ).exists()
 
+    start_time = exercise_class.event.start_time
+    duration = exercise_class.event.duration
+    # Combine the scheduled date and start time to create a datetime object for the event start
+    start_datetime = datetime.datetime.combine(exercise_class.scheduled_date, start_time)
+    # Calculate the end time by adding the duration to the start time
+    end_datetime = start_datetime + duration
+    end_time = end_datetime.time()
+
+
     if is_booked:
         status = "booked"
     elif is_available:
@@ -44,6 +53,7 @@ def exercise_class_detail(request, class_id):
         "trainer": exercise_class.event.trainer,
         "location": exercise_class.event.location,
         "start_time": exercise_class.event.start_time,
+        "end_time": end_time,
         "scheduled_date": exercise_class.scheduled_date,
         "duration": exercise_class.event.duration,
     }
