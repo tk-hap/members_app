@@ -35,6 +35,8 @@ def exercise_class_detail(request, class_id):
     # Calculate the end time by adding the duration to the start time
     end_datetime = start_datetime + duration
     end_time = end_datetime.time()
+    time_range = f"{start_time.strftime('%H:%M')} - {end_time.strftime('%H:%M')}"
+
 
 
     if is_booked:
@@ -54,6 +56,7 @@ def exercise_class_detail(request, class_id):
         "location": exercise_class.event.location,
         "start_time": exercise_class.event.start_time,
         "end_time": end_time,
+        "time_range": time_range,
         "scheduled_date": exercise_class.scheduled_date,
         "duration": exercise_class.event.duration,
     }
