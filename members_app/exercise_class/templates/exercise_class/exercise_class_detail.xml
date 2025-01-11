@@ -15,51 +15,23 @@
 {% endblock %}
 
 {% block content %}
-<view>
-  <view style="class-details">
-    <view style="class-icon-container">
-      <image style="class-details-icon" source="{% static 'icons/event.png' %}" />
-    </view>
-    <view style="class-item-text">
-      <text style="item-headline">Date</text>
-      <text style="item-supporting-text">{{ class_details.scheduled_date }}</text>
-    </view>
-  </view>
-  <view style="class-details">
-    <view style="class-icon-container">
-      <image style="class-details-icon" source="{% static 'icons/schedule.png' %}" />
-    </view>
-    <view style="class-item-text">
-      <text style="item-headline">Time</text>
-      <text style="item-supporting-text">{{ class_details.start_time }} - {{ class_details.end_time }}</text>
-    </view>
-  </view>
-  <view style="class-details">
-    <view style="class-icon-container">
-      <image style="class-details-icon" source="{% static 'icons/location.png' %}" />
-    </view>
-    <view style="class-item-text">
-      <text style="item-headline">Location</text>
-      <text style="item-supporting-text">{{ class_details.location }}</text>
-    </view>
-  </view>
-  <view style="class-details">
-    <view style="class-icon-container">
-      <image style="class-details-icon" source="{% static 'icons/person.png' %}" />
-    </view>
-    <view style="class-item-text">
-      <text style="item-headline">Trainer</text>
-      <text style="item-supporting-text">{{ class_details.trainer }}</text>
-    </view>
-  </view>
+<view style="container">
+  {% include "exercise_class/includes/class_detail.xml" with icon="icons/event.png" headline="Date" supporting_text=class_details.scheduled_date %}
+  {% include "exercise_class/includes/class_detail.xml" with icon="icons/schedule.png" headline="Time" supporting_text=class_details.time_range %}
+  {% include "exercise_class/includes/class_detail.xml" with icon="icons/location.png" headline="Location" supporting_text=class_details.location %}
+  {% include "exercise_class/includes/class_detail.xml" with icon="icons/person.png" headline="Trainer" supporting_text=class_details.trainer %}
+
+  {% if class_details.spots_remaining <= 10 %}
+  <text style="item-supporting-text class-spots-left">{{ class_details.spots_remaining }} spots left</text>
+  {% endif %}
+
 </view>
-</view>
-<view>
-    <view scroll="true" content-container-style="scroll-view">
-      <view>
-        <text style="basic-font" preformatted="true">{{ class_details.description }}</text>
-      </view>
+<view style="container">
+  <view scroll="true" content-container-style="scroll-view">
+    <view>
+      <text style="basic-font" preformatted="true">{{ class_details.description }}</text>
     </view>
+  </view>
 </view>
 {% if status == "booked" %}
 <view style="button-filled" href="{% url 'cancel-booking' class_details.id %}" verb="post" action="replace">

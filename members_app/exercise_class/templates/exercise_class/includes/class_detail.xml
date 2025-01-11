@@ -1,0 +1,10 @@
+{% load static %}
+<view style="class-details">
+  <view style="class-icon-container">
+    <image style="class-details-icon" source="{% static icon %}" />
+  </view>
+  <view style="class-item-text">
+    <text style="item-headline">{{ headline }}</text>
+    <text style="item-supporting-text">{{ supporting_text }}</text>
+  </view>
+</view>

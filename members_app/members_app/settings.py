@@ -43,8 +43,8 @@ SHARED_APPS = [
     "tenant_manager", # you must list the app where your tenant model resides in
 
     "unfold",
+    "unfold.contrib.forms",  # optional, if special form elements are needed
     #"unfold.contrib.filters",  # optional, if special filters are needed
-    # "unfold.contrib.forms",  # optional, if special form elements are needed
     # "unfold.contrib.inlines",  # optional, if special inlines are needed
     # "unfold.contrib.import_export",  # optional, if django-import-export package is used
     # "unfold.contrib.guardian",  # optional, if django-guardian package is used

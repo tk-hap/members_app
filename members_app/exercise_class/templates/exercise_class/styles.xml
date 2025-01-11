@@ -59,6 +59,11 @@
   id="class-details"
   marginVertical="12"
   flexDirection="row"
-  flex="1"
+  flex="0"
   minHeight="48"
+/>
+
+<style
+  id="class-spots-left"
+  margin="10"
 />

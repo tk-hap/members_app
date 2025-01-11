@@ -1,5 +1,7 @@
 from django.contrib import admin
+from django.db import models
 from unfold.admin import ModelAdmin, TabularInline, StackedInline
+from unfold.contrib.forms.widgets import WysiwygWidget
 from .models import ExerciseClassEvent, ExerciseClassOccurrence, Booking
 
 class BookingInline(TabularInline):

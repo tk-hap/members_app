@@ -43,6 +43,11 @@ class ExerciseClassOccurrence(models.Model):
 
     def is_available(self):
         return self.get_participants().count() < self.event.max_participants
+    
+    def spots_remaining(self):
+        if self.event.max_participants:
+            return self.event.max_participants - self.get_participants().count()
+        return None
 
 
 class Booking(models.Model):
