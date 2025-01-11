@@ -20,13 +20,18 @@
   {% include "exercise_class/includes/class_detail.xml" with icon="icons/schedule.png" headline="Time" supporting_text=class_details.time_range %}
   {% include "exercise_class/includes/class_detail.xml" with icon="icons/location.png" headline="Location" supporting_text=class_details.location %}
   {% include "exercise_class/includes/class_detail.xml" with icon="icons/person.png" headline="Trainer" supporting_text=class_details.trainer %}
+
+  {% if class_details.spots_remaining <= 10 %}
+  <text style="item-supporting-text class-spots-left">{{ class_details.spots_remaining }} spots left</text>
+  {% endif %}
+
 </view>
-<view>
-    <view scroll="true" content-container-style="scroll-view">
-      <view>
-        <text style="basic-font" preformatted="true">{{ class_details.description }}</text>
-      </view>
+<view style="container">
+  <view scroll="true" content-container-style="scroll-view">
+    <view>
+      <text style="basic-font" preformatted="true">{{ class_details.description }}</text>
     </view>
+  </view>
 </view>
 {% if status == "booked" %}
 <view style="button-filled" href="{% url 'cancel-booking' class_details.id %}" verb="post" action="replace">

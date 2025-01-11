@@ -37,6 +37,9 @@ def exercise_class_detail(request, class_id):
     end_time = end_datetime.time()
     time_range = f"{start_time.strftime('%H:%M')} - {end_time.strftime('%H:%M')}"
 
+    spots_remaining = exercise_class.spots_remaining()
+    spot_remaining_percentage = (spots_remaining / exercise_class.event.max_participants) * 100 
+
 
 
     if is_booked:
@@ -59,6 +62,8 @@ def exercise_class_detail(request, class_id):
         "time_range": time_range,
         "scheduled_date": exercise_class.scheduled_date,
         "duration": exercise_class.event.duration,
+        "spots_remaining": spots_remaining,
+        "spots_remaining_percentage": spot_remaining_percentage,
     }
 
     return render(
