@@ -9,6 +9,8 @@ services:
       timeout: 10s
     volumes:
       - ./data/db:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
     environment:
       - POSTGRES_DB=postgres
       - POSTGRES_USER=postgres
@@ -32,7 +34,7 @@ services:
         condition: service_completed_successfully
   migrations:
     build: .
-    command: python manage.py migrate --shared --noinput && python manage.py migrate --tenant --noinput
+    command: python manage.py migrate_schemas --shared --noinput && python manage.py migrate_schemas --tenant --noinput
     volumes:
       - .:/app
     environment:

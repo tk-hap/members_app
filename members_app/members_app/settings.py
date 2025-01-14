@@ -42,6 +42,8 @@ SHARED_APPS = [
     "django_tenants", # mandatory
     "tenant_manager", # you must list the app where your tenant model resides in
 
+    "django.contrib.contenttypes",
+
     "unfold",
     "unfold.contrib.forms",  # optional, if special form elements are needed
     #"unfold.contrib.filters",  # optional, if special filters are needed
@@ -50,13 +52,15 @@ SHARED_APPS = [
     # "unfold.contrib.guardian",  # optional, if django-guardian package is used
     # "unfold.contrib.simple_history",  # optional, if django-simple-history package is used
 
-    "django.contrib.admin",
-    "django.contrib.sessions",
-    "django.contrib.contenttypes",
-    "django.contrib.messages",
-    "django.contrib.staticfiles",
-    "django.contrib.auth",
+
+    # everything below here is optional
+    'django.contrib.auth',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.admin',
     "django.contrib.humanize",
+
+    "users.apps.UsersConfig",
 
     "django_hv",
     "imagekit",
@@ -66,20 +70,27 @@ SHARED_APPS = [
 TENANT_COLOR_ADMIN_APPS = False
 
 TENANT_APPS = [
+
+    'django.contrib.auth',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.admin',
+    "django.contrib.humanize",
+
     "django.contrib.contenttypes",
     "django.contrib.staticfiles",
 
     "rest_framework",
     "rest_framework.authtoken",
-    "notifications",
 
     "authentication.apps.AuthenticationConfig",
     "users.apps.UsersConfig",
     "workouts.apps.WorkoutsConfig",
     "trainers.apps.TrainersConfig",
     "exercise_class.apps.ExerciseClassConfig",
-    "feed.apps.FeedConfig",  # This needs to be imported after the notifications app
     "branding.apps.BrandingConfig",
+    "notifications",
+    "feed.apps.FeedConfig",  # This needs to be imported after the notifications app
 ]    
 
  # Avoid duplication of shared apps
