@@ -1,5 +1,10 @@
 {% extends "base.xml" %}
 {% load static %}
+
+{% block styles %}
+  {% include "feed/styles.xml" %}
+{% endblock %}
+
 {% block header %}
 {% if branding and branding.logo %} <!-- TODO: Default Image -->
 <image style="appbar-gym-logo" source="{{ branding.logo.url }}"/>
