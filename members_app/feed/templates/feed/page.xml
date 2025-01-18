@@ -2,19 +2,17 @@
 <items xmlns="https://hyperview.org/hyperview">
   {% for notification in page %}
     <item key="{{ notification.id }}" style="notification-item">
-        <view style="notification-item-left">
-            <image 
-              source="{% static "icons" %}/{{ notification.level }}.png"
-              style="notification-item-icon"
-            />
-            <view style="notification-item-left-labels">
-              <text style="notification-item-verb">{{ notification.verb }}</text>
-              <text style="notification-item-description">{{ notification.description }}</text>
-            </view>
+      <image 
+        source="{% static "icons" %}/{{ notification.level }}.png"
+        style="notification-item-icon"
+      />
+      <view style="notification-item-content">
+        <view style="notification-item-header">
+          <text style="notification-item-type">{{ notification.verb }}</text>
+          <text style="notification-item-time">{{ notification.time_since }}</text>
         </view>
-        <view style="notification-item-right">
-            <text style="notification-item-time">{{ notification.time_since }}</text>
-        </view>
+        <text style="notification-item-message">{{ notification.description}}</text>
+      </view>
     </item>
 {% endfor %}
 {% if page.has_next %}

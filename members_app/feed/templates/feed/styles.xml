@@ -1,41 +1,58 @@
 <style
   id="notification-item"
-  alignItems="center"
+  flex="1"
+  flexDirection="row"
+  alignItems="flex-start"
   backgroundColor="white"
+  minHeight="48"
+  padding="12"
   borderBottomColor="#eee"
   borderBottomWidth="1"
-  flex="1"
-  minHeight="48"
-  flexDirection="row"
-  justifyContent="space-between"
-  paddingLeft="24"
-  paddingRight="24"
   />
 <style
   id="notification-item-icon"
   height="36"
   width="36"
 />
-<style id="notification-item-left" flexDirection="row" />
 <style
-  id="notification-item-left-labels"
-  justifyContent="center"
-  marginLeft="8"
-  maxWidth="68%"
+  id="notification-item-icon-container"
+  minHeight="100%"
+  width="36"
+  backgroundColor="red"
+  position="absolute"
+/>
+<style 
+  id="notification-item-content" 
+  flex="1"
 />
 <style
-  id="notificiation-item-verb"
+  id="notification-item-header"
+  flexDirection="row"
+  justifyContent="space-between"
+  alignItems="center"
+  marginBottom="2"
+  marginLeft="5"
+/>
+<style
+  id="notification-item-type"
   color="#4E4D4D"
   fontSize="14"
-  fontWeight="bold"
+  fontFamily="Lexend-Bold"
+/>
+<style 
+  id="notification-item-time"
+  color="#49454F"
+  lineHeight="16"
+  fontSize="12"
+  fontWeight="500"
   fontFamily="Lexend"
 />
 <style
-  id="notification-item-description"
+  id="notification-item-message"
   color="black"
   fontSize="14"
   fontWeight="normal"
   fontFamily="Lexend"
+  flexWrap="wrap"
+  marginLeft="5"
 />
-<style id="notification-item-right" flexDirection="row" />
-<style id="notification-item-time" textAlign="right"/>
