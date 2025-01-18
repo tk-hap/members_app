@@ -34,7 +34,7 @@ services:
         condition: service_completed_successfully
   migrations:
     build: .
-    command: python manage.py migrate_schemas --shared --noinput && python manage.py migrate_schemas --tenant --noinput
+    command: python manage.py migrate
     volumes:
       - .:/app
     environment:

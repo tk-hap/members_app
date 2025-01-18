@@ -2,6 +2,7 @@ from django import forms
 from django.contrib.auth.models import Group
 from users.models import User
 from .models import Notification
+from .tasks import send_push_message_task
 from notifications.signals import notify
 from unfold.widgets import UnfoldAdminSelectWidget, UnfoldBooleanSwitchWidget, UnfoldAdminTextareaWidget
 
@@ -39,22 +40,37 @@ class SimpleNotificationForm(forms.ModelForm):
 
     class Meta:
         model = Notification
-        fields = ['recipient', 'recipient_group', 'description']
+        fields = ['recipient', 'recipient_group', 'description', 'push_notification']
 
 
     def save(self, commit=True):
         instance = super().save(commit=False)
+
         if self.cleaned_data['recipient_group']:
-            group = self.cleaned_data['recipient_group']
+            recipients = self.cleaned_data['recipient_group']
+        else:
+            recipients = [self.cleaned_data['recipient']]
+
+        # Send push notification
+        if self.cleaned_data['push_notification']:
+            for user in recipients:
+                send_push_message_task.delay(
+                    token=user.push_token,
+                    message=instance.description,
+                )
+
+        # I think this is the part that sends the notification to the recipient group, not sure if necessary
+        if self.cleaned_data['recipient_group']:
             notify.send(
                 sender=self.instance,
-                recipient=group,
+                recipient=recipients,
                 verb=instance.verb,
                 description=instance.description,
                 level="info",
                 target=instance.target,
                 action_object=instance.action_object,
             )
+
         if commit:
             instance.save()
             self.save_m2m()
