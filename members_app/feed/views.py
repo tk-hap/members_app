@@ -20,4 +20,7 @@ def feed_page(request, page):
     next_page = page + 1
     context = {"page": page_object, "next": next_page}
 
+    # Mark as read
+    notifications.mark_all_as_read()
+
     return render(request, "feed/page.xml", context)

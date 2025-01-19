@@ -1,0 +1,58 @@
+<style
+  id="notification-item"
+  flex="1"
+  flexDirection="row"
+  alignItems="flex-start"
+  backgroundColor="white"
+  minHeight="48"
+  padding="12"
+  borderBottomColor="#eee"
+  borderBottomWidth="1"
+  />
+<style
+  id="notification-item-icon"
+  height="36"
+  width="36"
+/>
+<style
+  id="notification-item-icon-container"
+  minHeight="100%"
+  width="36"
+  backgroundColor="red"
+  position="absolute"
+/>
+<style 
+  id="notification-item-content" 
+  flex="1"
+/>
+<style
+  id="notification-item-header"
+  flexDirection="row"
+  justifyContent="space-between"
+  alignItems="center"
+  marginBottom="2"
+  marginLeft="5"
+/>
+<style
+  id="notification-item-type"
+  color="#4E4D4D"
+  fontSize="14"
+  fontFamily="Lexend-Bold"
+/>
+<style 
+  id="notification-item-time"
+  color="#49454F"
+  lineHeight="16"
+  fontSize="12"
+  fontWeight="500"
+  fontFamily="Lexend"
+/>
+<style
+  id="notification-item-message"
+  color="black"
+  fontSize="14"
+  fontWeight="normal"
+  fontFamily="Lexend"
+  flexWrap="wrap"
+  marginLeft="5"
+/>
