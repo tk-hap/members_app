@@ -1,6 +1,5 @@
 {% extends "base.xml" %}
 {% load static %}
-{% load duration_filters %}
 
 {% block styles %}
 {% include "exercise_class/styles.xml" %}
