@@ -25,7 +25,6 @@
         <web-view 
             url="{{ workout_exercise.exercise.youtube_video|youtube_embed }}"
         />
-        <text>Youtube video true</text>
     {% endif %}
         <view
             id="shrink-{{ exercise.id }}"

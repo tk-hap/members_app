@@ -1,5 +1,5 @@
 {% extends "base.xml" %}
-{% load static %}
+{% load static custom_tags %}
 {% block header %}
 {% if branding and branding.logo %} <!-- TODO: Default Image -->
 <image style="appbar-gym-logo" source="{{ branding.logo.url }}"/>
@@ -23,7 +23,7 @@
             </view>
             <view style="workout-details-item">
               <image style="icon-small" source="{% static 'icons/schedule.png' %}"/>
-              <text style="item-supporting-text">{{ workout.duration }}</text>
+              <text style="item-supporting-text">{{ workout.duration|humanize_duration }}</text>
             </view>
           </view>
         </view>

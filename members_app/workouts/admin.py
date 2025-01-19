@@ -1,4 +1,5 @@
 from django.contrib import admin
+from django.db import models
 from unfold.admin import ModelAdmin, TabularInline, StackedInline
 from .models import Exercise, Workout, WorkoutExercise, WorkoutAssignment
 
@@ -21,7 +22,7 @@ class WorkoutAdmin(ModelAdmin):
 
 @admin.register(WorkoutExercise)
 class WorkoutExerciseAdmin(ModelAdmin):
-    list_display = ("workout", "exercise", "sets", "reps", "weight")
+    list_display = ("workout", "exercise", "sets", "reps", "load", "unit")
     model = WorkoutExercise
 
 

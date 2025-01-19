@@ -27,7 +27,7 @@ class Workout(models.Model):
     difficulty = models.CharField(
         max_length=20, choices=DIFFICULTY_CHOICES, default=BEGINNER
     )
-    duration = models.PositiveIntegerField()
+    duration = models.DurationField()
     created_by = models.ForeignKey(User, on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
     featured = models.BooleanField(default=False)
@@ -37,13 +37,24 @@ class Workout(models.Model):
 
 
 class WorkoutExercise(models.Model):
+    KG = "kg"
+    LBS = "lbs"
+    PERCENT = "%"
+
+    LOAD_CHOICES = [
+        (KG, "Kilograms"),
+        (LBS, "Pounds"),
+        (PERCENT, "%"),
+    ]
+
     workout = models.ForeignKey(
         Workout, related_name="workout_exercises", on_delete=models.CASCADE
     )
     exercise = models.ForeignKey(Exercise, on_delete=models.CASCADE)
     sets = models.PositiveIntegerField()
     reps = models.PositiveIntegerField()
-    weight = models.FloatField(blank=True, null=True)
+    load = models.FloatField(blank=True, null=True)
+    unit = models.CharField(max_length=5, choices=LOAD_CHOICES, default=KG, blank=True, null=True)
 
     def __str__(self):
         return f"{self.workout.name} - {self.exercise.name}"

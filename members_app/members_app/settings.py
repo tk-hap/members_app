@@ -126,6 +126,9 @@ TEMPLATES = [
                 "django.contrib.messages.context_processors.messages",
                 "branding.context_processors.branding", # Handles branding model customizations
             ],
+            "libraries": {
+                "custom_tags": "members_app.templatetags.custom_tags",
+            },
         },
     },
 ]

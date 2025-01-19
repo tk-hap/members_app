@@ -1,5 +1,5 @@
 {% extends "base.xml" %}
-{% load static %}
+{% load static custom_tags %}
 
 {% block styles %}
   {% include "workouts/styles.xml" %}
@@ -21,7 +21,7 @@
     <view style="workout-details">
       <view style="workout-details-item">
         <image style="icon-small" source="{% static 'icons/schedule.png' %}"/>
-        <text style="item-supporting-text">{{ workout.duration }}m</text>
+        <text style="item-supporting-text">{{ workout.duration|humanize_duration }}</text>
       </view>
       <view style="workout-details-item">
         <image style="icon-small" source="{% static 'icons/' %}{{ workout.difficulty }}-bar.png"/>
@@ -36,8 +36,8 @@
       <text style="title-medium">{{ exercise.exercise }}</text>
       <text style="body-medium">
         {{ exercise.sets }} sets x {{ exercise.reps }} reps
-        {% if exercise.weight %}
-          at {{ exercise.weight }} kgs 
+        {% if exercise.load %}
+          at {{ exercise.load }} {{ exercise.unit }}
         {% endif %}
       </text>
       <view style="divider"/>

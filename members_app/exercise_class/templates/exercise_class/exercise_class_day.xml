@@ -26,7 +26,7 @@
       <image style="item-avatar" source="{{ class.trainer.picture_thumbnail.url }}"/>
       <view style="class-item-text">
         <text style="item-headline">{{ class.class_name }}</text>
-        <text style="item-supporting-text">Trainer - {{ class.trainer }}</text>
+        <text style="item-supporting-text">Trainer • {{ class.trainer }}</text>
       {% if class.participants.count >= class.max_participants %}
         <text style="item-supporting-text">Unavailable</text>
         {% else %}
