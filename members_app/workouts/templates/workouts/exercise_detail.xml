@@ -18,9 +18,7 @@
         hide="false"
         style="web-view-flex {% if workout_exercise.exercise.youtube_video %}yt-video-container{% endif %}"
     >
-        <text>
-            {{ workout_exercise.exercise.description }}
-        </text>
+        <text style="body-medium" preformatted="true">{{ workout_exercise.exercise.description }}</text>
     {% if workout_exercise.exercise.youtube_video %}
         <web-view 
             url="{{ workout_exercise.exercise.youtube_video|youtube_embed }}"

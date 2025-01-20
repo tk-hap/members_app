@@ -10,7 +10,7 @@ def notify_participants(sender, instance, **kwargs):
     if not instance.is_upcoming():
         return
 
-    message = f"Class {instance.event.class_name} has been cancelled"
+    message = f"{instance.event.class_name} class on {instance.scheduled_date.strftime('%b %d')} has been cancelled"
 
     participants = instance.get_participants()
 
