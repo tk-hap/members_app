@@ -61,5 +61,57 @@ The Members App provides a platform for gym members to manage their workouts, bo
    docker compose up
    ```
 
-## Screenshots
+## React Native App Screenshots
 
+<table>
+  <tr>
+    <td>Login page</td>
+    <td>Home page</td>
+  </tr>
+  <tr>
+    <td><img src="assets/Screenshot_2025-01-20-22-24-54-37_f73b71075b1de7323614b647fe394240.jpg"></td>
+    <td><img src="assets/Screenshot_2025-01-20-22-22-58-50_f73b71075b1de7323614b647fe394240.jpg"></td>
+  </tr>
+ </table>
+
+<table>
+  <tr>
+    <td>Workouts page</td>
+    <td>Workout and exercise details</td>
+  </tr>
+  <tr>
+    <td><img src="assets/Screenshot_2025-01-20-22-23-09-98_f73b71075b1de7323614b647fe394240.jpg"></td>
+    <td><img src="assets/Screenshot_2025-01-20-09-18-42-76_f73b71075b1de7323614b647fe394240.jpg"></td>
+  </tr>
+ </table>
+
+<table>
+  <tr>
+    <td>Classes page</td>
+    <td>Class booking page</td>
+  </tr>
+  <tr>
+    <td><img src="assets/Screenshot_2025-01-20-22-25-48-21_f73b71075b1de7323614b647fe394240.jpg"></td>
+    <td><img src="assets/Screenshot_2025-01-20-09-07-49-97_f73b71075b1de7323614b647fe394240.jpg"></td>
+  </tr>
+ </table>
+
+<table>
+  <tr>
+    <td>Trainers page</td>
+    <td>Trainers contact page</td>
+  </tr>
+  <tr>
+    <td><img src="assets/Screenshot_2025-01-20-09-08-01-11_f73b71075b1de7323614b647fe394240.jpg"></td>
+    <td><img src="assets/Screenshot_2025-01-20-09-08-07-27_f73b71075b1de7323614b647fe394240.jpg"></td>
+  </tr>
+ </table>
+
+<table>
+  <tr>
+    <td>Feed page</td>
+  </tr>
+  <tr>
+    <td><img src="assets/Screenshot_2025-01-20-22-40-23-87_f73b71075b1de7323614b647fe394240.jpg"></td>
+  </tr>
+ </table>
