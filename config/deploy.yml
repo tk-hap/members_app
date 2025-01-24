@@ -1,0 +1,67 @@
+service: members_app
+image: tkhap/members_app
+
+ssh:
+  user: ubuntu
+
+env:
+  secret:
+    - POSTGRES_NAME
+    - POSTGRES_USER
+    - POSTGRES_PASSWORD
+    - CACHE_URL
+
+proxy:
+  ssl: false
+  #host: example.com
+  app_port: 8000 
+
+servers:
+  web:
+    hosts:
+      - 192.168.0.16
+    cmd: bin/app web
+
+  worker:
+    hosts:
+      - 192.168.0.16
+    cmd: bin/app worker
+
+  scheduler:
+    hosts:
+      - 192.168.0.16
+    cmd: bin/app scheduler
+
+accessories:
+  db:
+    image: postgres:17
+    host: 192.168.0.16
+    port: 127.0.0.1:5432:5432
+    env:
+      secret:
+        - POSTGRES_DB
+        - POSTGRES_USER
+        - POSTGRES_PASSWORD
+    volumes:
+      - /var/postgres/data:/var/lib/postgresql/data
+
+  redis:
+    image: redis:7.4
+    host: 192.168.0.16
+    port: 127.0.0.1:6379:6379
+    cmd: --maxmemory 200m --maxmemory-policy allkeys-lru
+    volumes:
+      - /var/redis/data:/data
+
+registry:
+  username:
+    - DOCKER_USERNAME
+  password:
+    - DOCKER_PASSWORD
+
+builder:
+  arch: amd64
+  cache:
+    type: registry
+    options: mode=max
+    image: kamal-app-build-cache
