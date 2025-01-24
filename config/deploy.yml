@@ -58,3 +58,7 @@ registry:
     - DOCKER_USERNAME
   password:
     - DOCKER_PASSWORD
+
+builder:
+  arch: amd64
+  local: true
