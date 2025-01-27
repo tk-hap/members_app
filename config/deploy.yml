@@ -9,7 +9,6 @@ env:
     - POSTGRES_NAME
     - POSTGRES_USER
     - POSTGRES_PASSWORD
-    - CACHE_URL
 
 proxy:
   ssl: false
@@ -58,3 +57,6 @@ registry:
     - DOCKER_USERNAME
   password:
     - DOCKER_PASSWORD
+
+builder:
+  arch: amd64
