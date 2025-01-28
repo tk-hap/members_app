@@ -10,4 +10,4 @@ RUN pip install -r requirements.txt --no-cache-dir
 
 COPY members_app/. /app
 
-RUN chmod +x /app/bin/app
+RUN chmod +x /app/bin/app && chmod +x /app/bin/waitfordb
