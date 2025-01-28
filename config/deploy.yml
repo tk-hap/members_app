@@ -9,11 +9,15 @@ env:
     - POSTGRES_NAME
     - POSTGRES_USER
     - POSTGRES_PASSWORD
+  clear:
+    DB_HOST: members_app-db
 
 proxy:
   ssl: false
   #host: example.com
   app_port: 8000 
+  healthcheck:
+    path: /health
 
 servers:
   web:
