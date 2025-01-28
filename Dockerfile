@@ -1,5 +1,7 @@
 FROM python:3.11-alpine
 
+RUN apk add --no-cache bash
+
 WORKDIR /app
 
 COPY members_app/requirements.txt /app
