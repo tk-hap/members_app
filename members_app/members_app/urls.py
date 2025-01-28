@@ -24,7 +24,7 @@ import notifications.urls
 from . import views
 
 urlpatterns = [
-    path("up", views.health_check, name="health_check"),
+    path("health", views.health_check, name="health_check"),
     path("admin/", admin.site.urls),
     path("auth/", include("authentication.urls")),
     path("classes/", include("exercise_class.urls")),
