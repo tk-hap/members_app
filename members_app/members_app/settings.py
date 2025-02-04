@@ -11,6 +11,8 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 import os
 from pathlib import Path
+    "django.middleware.security.SecurityMiddleware",
+    "whitenoise.middleware.WhiteNoiseMiddleware",
 from django.utils.translation import gettext_lazy as _
 from django.urls import reverse_lazy
 
@@ -209,12 +211,10 @@ USE_TZ = True
 
 STATIC_URL = "static/"
 
-if DEBUG:
-    STATICFILES_DIRS = [
-        BASE_DIR / "static",
+STATICFILES_DIRS = [
+    BASE_DIR / "static",
     ]
-else:
-    STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
+STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 
 
 MEDIA_URL = "/media/"
