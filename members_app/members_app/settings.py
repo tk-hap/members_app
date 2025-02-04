@@ -26,7 +26,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = "django-insecure-m17pw#6&!z1-+fxadty@6%50(m0aypj8+p)h&(b6bxl(7668q9"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.environ.get("DEBUG", default=True)
 
 ALLOWED_HOSTS = ["*"]
 
@@ -134,11 +134,12 @@ TEMPLATES = [
     },
 ]
 
-STORAGES = {
-    "staticfiles": {
-        "BACKEND": "whitenoise.storage.CompressedStaticFilesStorage",
-    },
-}
+if not DEBUG:
+    STORAGES = {
+        "staticfiles": {
+            "BACKEND": "whitenoise.storage.CompressedStaticFilesStorage",
+        },
+    }
 
 WSGI_APPLICATION = "members_app.wsgi.application"
 
@@ -201,11 +202,14 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
 STATIC_URL = "static/"
-STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 
-STATICFILES_DIRS = [
-    BASE_DIR / "static",
-]
+if DEBUG:
+    STATICFILES_DIRS = [
+        BASE_DIR / "static",
+    ]
+else:
+    STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
+
 
 MEDIA_URL = "/media/"
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')

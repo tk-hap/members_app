@@ -12,6 +12,7 @@ env:
   clear:
     DB_HOST: members_app-db
     REDIS_HOST: members_app-redis
+    DEBUG: False
 
 proxy:
   ssl: false
