@@ -6,7 +6,7 @@ from imagekit.processors import ResizeToFill
 class Trainer(models.Model):
     first_name = models.CharField(max_length=30)
     last_name = models.CharField(max_length=30)
-    picture = models.ImageField(upload_to="trainers/")
+    picture = models.ImageField(upload_to="trainers/", null=True, blank=True)
     picture_thumbnail = ImageSpecField(
         source="picture",
         processors=[ResizeToFill(248, 248, anchor=(0, 0))],
