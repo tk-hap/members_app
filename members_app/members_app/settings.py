@@ -137,9 +137,12 @@ TEMPLATES = [
 if not DEBUG:
     STORAGES = {
         "default": {
-            "BACKEND": "django.core.files.storage.FileSystemStorage",
+            "BACKEND": "storages.backends.s3.S3Storage",
             "OPTIONS": {
-                "location": "/media/.",
+                "bucket_name": os.environ.get("S3_BUCKET_NAME"),
+                "endpoint_url": os.environ.get("S3_ENDPOINT_URL"),
+                "access_key": os.environ.get("S3_ACCESS_KEY"),
+                "secret_key": os.environ.get("S3_SECRET_KEY"),
             }
         },
         "staticfiles": {

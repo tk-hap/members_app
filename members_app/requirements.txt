@@ -22,6 +22,7 @@ django-recurrence==1.11.1
 django-unfold==0.43.0
 djangorestframework==3.15.2
 djangorestframework-xml==2.0.0
+django-storages==1.14.4
 exponent_server_sdk==2.1.0
 gunicorn==23.0.0
 ics==0.7.2

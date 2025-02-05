@@ -9,10 +9,14 @@ env:
     - POSTGRES_NAME
     - POSTGRES_USER
     - POSTGRES_PASSWORD
+    - S3_ACCESS_KEY
+    - S3_SECRET_KEY
   clear:
     DB_HOST: members_app-db
     REDIS_HOST: members_app-redis
     DEBUG: False
+    S3_BUCKET_NAME: members-app-media
+    S3_ENDPOINT_URL: https://01691522d1b29d249548ed4899775e34.r2.cloudflarestorage.com/members-app-media
 
 proxy:
   ssl: false
