@@ -143,6 +143,9 @@ if not DEBUG:
                 "endpoint_url": os.environ.get("S3_ENDPOINT_URL"),
                 "access_key": os.environ.get("S3_ACCESS_KEY"),
                 "secret_key": os.environ.get("S3_SECRET_KEY"),
+                "signature_version": "s3v4",
+                "default_acl": "public-read",
+
             }
         },
         "staticfiles": {
