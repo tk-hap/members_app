@@ -33,7 +33,9 @@ ALLOWED_HOSTS = ["*"]
 CSRF_TRUSTED_ORIGINS = [
     "http://localhost",
     "http://*.gymlink.local",
-    "https://django-members-app.communitygrounds.co.nz",
+    "https://gymlink.cloud",
+    "http://*.gymlink.cloud",
+
 ]
 
 # Application definition
