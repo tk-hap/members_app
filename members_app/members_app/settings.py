@@ -34,7 +34,7 @@ CSRF_TRUSTED_ORIGINS = [
     "http://localhost",
     "http://*.gymlink.local",
     "https://gymlink.cloud",
-    "http://*.gymlink.cloud",
+    "https://*.gymlink.cloud",
 
 ]
 
