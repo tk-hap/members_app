@@ -2,7 +2,7 @@ service: members_app
 image: tkhap/members_app
 
 ssh:
-  user: ubuntu
+  user: root
 
 env:
   secret:
@@ -19,8 +19,10 @@ env:
     S3_ENDPOINT_URL: https://01691522d1b29d249548ed4899775e34.r2.cloudflarestorage.com
 
 proxy:
-  ssl: false
-  #host: example.com
+  ssl: true
+  hosts:
+   - gymlink.cloud
+   - demogym.gymlink.cloud
   app_port: 8000 
   healthcheck:
     path: /health
@@ -28,24 +30,21 @@ proxy:
 servers:
   web:
     hosts:
-      - 192.168.0.16
-    cmd: bin/app web
+      - 209.38.31.70 
 
   worker:
     hosts:
-      - 192.168.0.16
-    cmd: bin/app worker
+      - 209.38.31.70
 
   scheduler:
     hosts:
-      - 192.168.0.16
-    cmd: bin/app scheduler
+      - 209.38.31.70
 
 accessories:
   db:
     image: postgres:17
-    host: 192.168.0.16
-    port: 5432:5432
+    host: 209.38.31.70  
+    port: 127.0.0.1:5432:5432
     env:
       secret:
         - POSTGRES_DB
@@ -56,17 +55,8 @@ accessories:
 
   redis:
     image: redis:7.4
-    host: 192.168.0.16
+    host: 209.38.31.70
     port: 127.0.0.1:6379:6379
     cmd: --maxmemory 200m --maxmemory-policy allkeys-lru
     volumes:
       - /var/redis/data:/data
-
-registry:
-  username:
-    - DOCKER_USERNAME
-  password:
-    - DOCKER_PASSWORD
-
-builder:
-  arch: amd64
