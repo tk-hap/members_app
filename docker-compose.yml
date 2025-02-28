@@ -8,7 +8,7 @@ services:
       start_period: 30s
       timeout: 10s
     volumes:
-      - ./data/db:/var/lib/postgresql/data
+      - ./members_app/data/db:/var/lib/postgresql/data
     ports:
       - "5432:5432"
     environment:
@@ -19,7 +19,7 @@ services:
     build: .
     command: python manage.py runserver 0.0.0.0:8000
     volumes:
-      - .:/app
+      - ./members_app:/app
     ports:
       - "8000:8000"
     environment:
@@ -36,7 +36,7 @@ services:
     build: .
     command: python manage.py migrate
     volumes:
-      - .:/app
+      - ./members_app:/app
     environment:
       - POSTGRES_NAME=postgres
       - POSTGRES_USER=postgres
@@ -48,7 +48,7 @@ services:
     build: .
     command: celery -A members_app worker -l info
     volumes:
-      - .:/app
+      - ./members_app:/app
     environment:
       - POSTGRES_NAME=postgres
       - POSTGRES_USER=postgres
@@ -61,7 +61,7 @@ services:
     build: .
     command: celery -A members_app beat -l info
     volumes:
-      - .:/app
+      - ./members_app:/app
     environment:
       - POSTGRES_NAME=postgres
       - POSTGRES_USER=postgres

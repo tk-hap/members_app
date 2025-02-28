@@ -5,7 +5,7 @@
       {% block styles %}
       {% endblock %}
     </styles>
-    <body id="base-body" style="body" safe-area="true">
+    <body id="base-body" style="body">
       <header style="appbar-container">
         {% block header %}{% endblock %}
       </header>

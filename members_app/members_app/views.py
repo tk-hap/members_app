@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.http import HttpResponse
 from rest_framework.permissions import IsAuthenticated 
 from rest_framework.authentication import TokenAuthentication
 from rest_framework.exceptions import AuthenticationFailed
@@ -6,6 +7,10 @@ from rest_framework.decorators import api_view, authentication_classes
 from django.utils import timezone
 from workouts.models import Workout
 from exercise_class.models import Booking, ExerciseClassOccurrence, ExerciseClassEvent
+
+
+def health_check(request):
+    return HttpResponse("OK")
 
 
 def index(request):

@@ -36,7 +36,7 @@
   {% for class in class_bookings %}
     <item key="{{ class.id }}" href="{% url 'exercise-class-detail' class.id %}">
       <view style="content-card-elevated">
-        <image style="item-avatar" source="{{ class.event.trainer.picture_thumbnail.url }}"/>
+        <!-- <image style="item-avatar" source="{{ class.event.trainer.picture_thumbnail.url }}"/> -->
         <view style="class-item-text">
           <text style="item-headline">{{ class.event.class_name }}</text>
           <text style="item-supporting-text">Trainer - {{ class.event.trainer }}</text>

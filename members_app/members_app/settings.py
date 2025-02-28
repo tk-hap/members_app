@@ -26,14 +26,16 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = "django-insecure-m17pw#6&!z1-+fxadty@6%50(m0aypj8+p)h&(b6bxl(7668q9"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = (os.environ.get("DJANGO_DEBUG") == "True")
 
 ALLOWED_HOSTS = ["*"]
 
 CSRF_TRUSTED_ORIGINS = [
     "http://localhost",
     "http://*.gymlink.local",
-    "https://django-members-app.communitygrounds.co.nz",
+    "https://gymlink.cloud",
+    "https://*.gymlink.cloud",
+
 ]
 
 # Application definition
@@ -99,8 +101,9 @@ INSTALLED_APPS = SHARED_APPS + [
 ]
 
 MIDDLEWARE = [
-    "django_tenants.middleware.main.TenantMainMiddleware",
     "django.middleware.security.SecurityMiddleware",
+    "whitenoise.middleware.WhiteNoiseMiddleware",
+    "django_tenants.middleware.main.TenantMainMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
@@ -133,6 +136,25 @@ TEMPLATES = [
     },
 ]
 
+if not DEBUG:
+    STORAGES = {
+        "default": {
+            "BACKEND": "storages.backends.s3.S3Storage",
+            "OPTIONS": {
+                "bucket_name": os.environ.get("S3_BUCKET_NAME"),
+                "endpoint_url": os.environ.get("S3_ENDPOINT_URL"),
+                "access_key": os.environ.get("S3_ACCESS_KEY"),
+                "secret_key": os.environ.get("S3_SECRET_KEY"),
+                "signature_version": "s3v4",
+                "default_acl": "public-read",
+
+            }
+        },
+        "staticfiles": {
+            "BACKEND": "whitenoise.storage.CompressedStaticFilesStorage",
+        },
+    }
+
 WSGI_APPLICATION = "members_app.wsgi.application"
 
 
@@ -145,7 +167,7 @@ DATABASES = {
         "NAME": os.environ.get("POSTGRES_NAME"),
         "USER": os.environ.get("POSTGRES_USER"),
         "PASSWORD": os.environ.get("POSTGRES_PASSWORD"),
-        "HOST": "db",
+        "HOST": os.environ.get("DB_HOST", default="db"),
         "PORT": 5432,
     }
 }
@@ -197,7 +219,9 @@ STATIC_URL = "static/"
 
 STATICFILES_DIRS = [
     BASE_DIR / "static",
-]
+    ]
+STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
+
 
 MEDIA_URL = "/media/"
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
@@ -243,8 +267,8 @@ ACCOUNT_SESSION_REMEMBER = True
 NOTIFICATIONS_NOTIFICATION_MODEL = "feed.Notification"
 
 # Celery settings
-CELERY_BROKER_URL = "redis://redis:6379"
-CELERY_RESULT_BACKEND = "redis://redis:6379"
+CELERY_BROKER_URL = f"redis://{os.environ.get('REDIS_HOST', default='redis')}:6379"
+CELERY_RESULT_BACKEND = f"redis://{os.environ.get('REDIS_HOST', default='redis')}:6379"
 
 UNFOLD_TENANT = {
     "SIDEBAR": {

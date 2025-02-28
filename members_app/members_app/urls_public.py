@@ -27,16 +27,5 @@ from . import views
 
 urlpatterns = [
     path("admin_tenants/", tenant_admin_site.urls), # Only for managing tenants
-    #path("admin/", admin.site.urls),
-    #path("auth/", include("authentication.urls")),
-    #path("classes/", include("exercise_class.urls")),
-    #path("users/", include("users.urls")),
-    #path("feed/", include("feed.urls")),
-    #path("trainers/", include("trainers.urls")),
-    #path("workouts/", include("workouts.urls")),
-    #path("home/", views.home, name="home"),
-    #path("index.xml", views.index, name="index"),
-    #path(
-        #"inbox/notifications/", include(notifications.urls, namespace="notifications")
-    #),
+    path("health", views.health_check, name="health_check"),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
